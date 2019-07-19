@@ -1,0 +1,29 @@
+*.iml
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+/.idea/
+.DS_Store
+/build
+/release
+/captures
+*/build/*
+.idea/*
+
+*.apk
+*.log
+output.json
+
+Translation script/__pycache__/strings_converter.cpython-36.pyc
+
+Translation script/client_secret_480814324061-lugjacqo54uqrgv9aof10720h7929cbg.apps.googleusercontent.com.json
+
+keystore.properties
+/Translation script/Skyeng-strings.zip
+
+fastlane/report.xml
+
+
+
+logcat\.txt

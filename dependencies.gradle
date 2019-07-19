@@ -1,0 +1,35 @@
+ext {
+    toolVersions = [
+            gradlePlagin     : '3.4.2',
+            kotlin_version   : '1.3.41',
+
+            compileSdkVersion: 29,
+            buildToolsVersion: '28.0.3',
+            minSdkVersion    : 28,
+            targetSdkVersion : 29,
+    ]
+
+    libVersions = [
+            appcompat         : "1.0.2",
+
+            constraint        : "1.1.3",
+            dagger            : '2.23.2',
+
+            retrofit          : '2.6.0',
+
+            moxy              : "1.5.6",
+            coroutines        : "1.0.1",
+
+            okhttp            : "4.0.1",
+
+            rxandroid         : "2.1.1",
+            rxjava            : "2.2.8",
+            cicerone          : "3.0.0",
+            preferences2      : "2.0.0",
+            textdrawable      : "1.0.1",
+            runtime_permission: "1.0.5",
+            gson              : "2.8.5",
+
+
+    ]
+}

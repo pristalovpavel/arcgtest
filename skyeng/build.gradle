@@ -1,0 +1,43 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion toolVersions.compileSdkVersion
+    buildToolsVersion toolVersions.buildToolsVersion
+    defaultConfig {
+        applicationId "arch.module"
+        minSdkVersion toolVersions.minSdkVersion
+        targetSdkVersion toolVersions.targetSdkVersion
+        versionCode 1
+        versionName "0.0.1"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$toolVersions.kotlin_version"
+    implementation "androidx.appcompat:appcompat:$libVersions.appcompat"
+    implementation "androidx.core:core-ktx:$libVersions.appcompat"
+
+    //Dagger-Android
+    implementation "com.google.dagger:dagger:$libVersions.dagger"
+    kapt "com.google.dagger:dagger-compiler:$libVersions.dagger"
+    implementation "com.google.dagger:dagger-android:$libVersions.dagger"
+    kapt "com.google.dagger:dagger-android-processor:$libVersions.dagger"
+    implementation "com.google.dagger:dagger-android-support:$libVersions.dagger"
+
+    implementation "com.squareup.okhttp3:logging-interceptor:$libVersions.okhttp"
+    implementation "com.squareup.okhttp3:okhttp:$libVersions.okhttp"
+    compileOnly "com.squareup.retrofit2:retrofit:$libVersions.retrofit"
+
+    implementation "ru.terrakok.cicerone:cicerone:$libVersions.cicerone"
+
+}
