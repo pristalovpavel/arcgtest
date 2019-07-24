@@ -26,6 +26,23 @@ allprojects {
     }
 }
 
+subprojects {
+    pluginManager.withPlugin("kotlin-kapt") {
+        kapt {
+            useBuildCache = true
+            correctErrorTypes = true
+            arguments {
+                arg('dagger.formatGeneratedSource', 'disabled')
+                arg('dagger.gradle.incremental', 'enabled')
+            }
+        }
+    }
+    tasks.withType(Test) {
+        maxParallelForks = Runtime.runtime.availableProcessors() / 2
+    }
+}
+
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }

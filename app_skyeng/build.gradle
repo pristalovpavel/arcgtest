@@ -7,12 +7,11 @@ android {
     compileSdkVersion toolVersions.compileSdkVersion
     buildToolsVersion toolVersions.buildToolsVersion
     defaultConfig {
-        applicationId "arch.module"
+        applicationId "arch.module.skyend"
         minSdkVersion toolVersions.minSdkVersion
         targetSdkVersion toolVersions.targetSdkVersion
         versionCode 1
         versionName "0.0.1"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
