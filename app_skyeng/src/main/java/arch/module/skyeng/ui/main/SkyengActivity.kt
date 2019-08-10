@@ -2,11 +2,12 @@ package arch.module.skyeng.ui.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import arch.module.auth.ui.SkyengAuthScreenFactory
 import arch.module.corenavigation.MvpRouter
 import arch.module.corenavigation.NestedNavigation
 import arch.module.skyeng.R
+import arch.module.skyeng.di.AppInjector
 import arch.module.skyeng.di.SkyengAppComponent.Companion.appComponent
+import arch.module.skyeng.ui.SkyengRoutingScreen
 import ru.terrakok.cicerone.NavigatorHolder
 import javax.inject.Inject
 
@@ -18,7 +19,7 @@ class SkyengActivity : AppCompatActivity() {
     lateinit var router: MvpRouter
 
     @Inject
-    lateinit var appInjector: SkyengAuthScreenFactory
+    lateinit var appInjector: AppInjector
 
     @Inject
     lateinit var navigatorHolder: NavigatorHolder
@@ -29,7 +30,7 @@ class SkyengActivity : AppCompatActivity() {
         setContentView(R.layout.fragment_single_container)
 
         if (savedInstanceState == null) {
-            router.replaceScreen("auth_screen")
+            router.replaceScreen(SkyengRoutingScreen.SKYNEG_AUTH)
         }
     }
 

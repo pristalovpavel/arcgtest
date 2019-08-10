@@ -8,7 +8,7 @@ interface SkyengAuthScreenFactory {
     fun createSkyengAuthScreen(): Fragment
 }
 
-internal class SkyengAuthScreenFactoryImpl: SkyengAuthScreenFactory {
+internal class SkyengAuthScreenFactoryImpl : SkyengAuthScreenFactory {
     override fun createSkyengAuthScreen(): Fragment {
         return AuthScreenFragment()
     }

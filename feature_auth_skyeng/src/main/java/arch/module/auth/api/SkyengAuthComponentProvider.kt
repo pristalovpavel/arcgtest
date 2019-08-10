@@ -11,6 +11,7 @@ import javax.inject.Singleton
 @Module
 class SkyengAuthExternalModule {
     @Provides
+//    @Singleton
     fun provideSkyengAuthProvider(): SkyengAuthScreenFactory =
         SkyengAuthScreenFactoryImpl()
 }
@@ -22,9 +23,7 @@ interface SkyengAuthComponentProvider : SkyengAuthDependencies {
     companion object {
 
         fun init(): SkyengAuthComponentProvider {
-
-            return DaggerSkyengAuthComponentProvider.builder()
-                .build()
+            return DaggerSkyengAuthComponentProvider.create()
         }
     }
 }
