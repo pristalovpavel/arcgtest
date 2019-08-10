@@ -23,9 +23,9 @@ android {
 
 dependencies {
 
-    implementation project(':core_mvp_moxy')
     implementation project(':core_utils')
-    implementation project(':core_navigation')
+    implementation project(':core_mvp_moxy')
+//    implementation project(':core_navigation')
 
     implementation project(':feature_main_skyeng')
     implementation project(':feature_auth_skyeng')

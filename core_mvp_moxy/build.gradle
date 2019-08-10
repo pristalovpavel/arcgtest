@@ -1,7 +1,5 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
-apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion toolVersions.compileSdkVersion
@@ -26,5 +24,4 @@ dependencies {
 
     api "com.github.moxy-community:moxy:moxyVersion$libVersions.moxy"
     api "com.github.moxy-community:moxy-androidx:$libVersions.moxy"
-    kapt "com.github.moxy-community:moxy-compiler:$libVersions.moxy"
 }
