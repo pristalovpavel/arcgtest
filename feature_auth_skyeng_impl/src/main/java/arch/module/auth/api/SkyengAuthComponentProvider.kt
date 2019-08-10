@@ -17,14 +17,13 @@ class SkyengAuthExternalModule {
 
 @Singleton
 @Component(modules = [SkyengAuthExternalModule::class])
-interface SkyengAuthComponentExternal : SkyengAuthProvider {
+interface SkyengAuthComponentProvider : SkyengAuthDependencies {
 
     companion object {
 
-        fun init(): SkyengAuthComponentExternal {
+        fun init(): SkyengAuthComponentProvider {
 
-            return DaggerSkyengAuthComponentExternal.builder()
-//                .mainToolsProvider(mainToolsProvider)
+            return DaggerSkyengAuthComponentProvider.builder()
                 .build()
         }
     }

@@ -1,8 +1,11 @@
 package arch.module.skyeng.di
 
-import arch.module.auth.api.SkyengAuthProvider
+import arch.module.auth.api.SkyengAuthDependencies
+import arch.module.corenavigation.api.NavigationDependencies
 
 
-interface AppInjector : SkyengAuthProvider {
+interface AppInjector :
+    SkyengAuthDependencies,
+    NavigationDependencies {
 
 }

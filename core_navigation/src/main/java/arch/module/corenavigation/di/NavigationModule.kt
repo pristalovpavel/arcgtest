@@ -7,7 +7,7 @@ import ru.terrakok.cicerone.Cicerone
 import javax.inject.Singleton
 
 @Module
-class NavigationModule {
+internal class NavigationModule {
 
     @Singleton
     @Provides

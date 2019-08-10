@@ -1,9 +1,10 @@
 package arch.module.skyeng.di
 
 import android.content.Context
-import arch.module.auth.api.SkyengAuthComponentExternal
-import arch.module.auth.api.SkyengAuthProvider
-import arch.module.corenavigation.di.NavigationModule
+import arch.module.auth.api.SkyengAuthComponentProvider
+import arch.module.auth.api.SkyengAuthDependencies
+import arch.module.corenavigation.api.NavigationDependencies
+import arch.module.corenavigation.di.NavigationComponentProvider
 import arch.module.skyeng.SkyengApp
 import arch.module.skyeng.di.modules.AppModule
 import arch.module.skyeng.ui.main.SkyengActivity
@@ -12,10 +13,12 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(
-    dependencies = [SkyengAuthProvider::class],
+    dependencies = [
+        SkyengAuthDependencies::class,
+        NavigationDependencies::class
+    ],
     modules = [
-        AppModule::class,
-        NavigationModule::class
+        AppModule::class
     ]
 )
 interface SkyengAppComponent : AppInjector {
@@ -27,8 +30,8 @@ interface SkyengAppComponent : AppInjector {
         lateinit var appComponent: SkyengAppComponent
         fun init(context: Context) {
             this.appComponent = DaggerSkyengAppComponent.builder()
-                .appModule(AppModule(context))
-                .skyengAuthProvider(SkyengAuthComponentExternal.init())
+                .skyengAuthProvider(SkyengAuthComponentProvider.init())
+                .navigationDependencies(NavigationComponentProvider.init())
                 .build()
         }
     }
