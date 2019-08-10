@@ -1,6 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 apply plugin: 'com.gradle.build-scan'
 apply from: 'dependencies.gradle'
+apply from: "scripts/dependencies-modules.gradle"
 
 buildscript {
     apply from: 'dependencies.gradle'
