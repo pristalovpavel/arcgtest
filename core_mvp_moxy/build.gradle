@@ -20,13 +20,6 @@ android {
     }
 }
 
-
-kapt{
-    arguments {
-        arg("moxyReflectorPackage", "arch.module.moxymvp")
-    }
-}
-
 dependencies {
     api project(':core_utils')
     api project(':core_navigation')

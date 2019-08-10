@@ -21,6 +21,13 @@ android {
 
 }
 
+kapt{
+    arguments {
+        arg("moxyReflectorPackage", "arch.module.auth")
+    }
+}
+
+
 dependencies {
 
     implementation project(':core_mvp_moxy')
@@ -28,5 +35,7 @@ dependencies {
     implementation project(':core_navigation')
 
     kapt "com.google.dagger:dagger-compiler:$libVersions.dagger"
+    kapt "com.github.moxy-community:moxy-compiler:$libVersions.moxy"
+
 
 }

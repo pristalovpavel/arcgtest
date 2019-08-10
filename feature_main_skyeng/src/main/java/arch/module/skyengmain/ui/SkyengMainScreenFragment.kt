@@ -2,18 +2,20 @@ package arch.module.skyengmain.ui
 
 import android.os.Bundle
 import android.view.View
+import arch.module.coreutils.di.findComponentDependencies
 import arch.module.moxymvp.ui.BaseFragment
 import arch.module.moxymvp.ui.BasePresenter
 import arch.module.skyengmain.R
 import arch.module.skyengmain.di.SkyengMainScreenComponent
 import kotlinx.android.synthetic.main.fragment_skyeng_main_screen.*
+import moxy.InjectViewState
 import moxy.MvpView
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
 import javax.inject.Inject
 
 
-internal class SkyengMainScreenFragment : BaseFragment<SkyengMainScreenPresenter>() {
+internal class SkyengMainScreenFragment : BaseFragment<SkyengMainScreenPresenter>(), SkyengMainScreenView {
 
     @InjectPresenter
     override lateinit var presenter: SkyengMainScreenPresenter
@@ -24,7 +26,7 @@ internal class SkyengMainScreenFragment : BaseFragment<SkyengMainScreenPresenter
     override fun getLayoutId(): Int = R.layout.fragment_skyeng_main_screen
 
     override fun diInject() {
-        SkyengMainScreenComponent.init().inject(this)
+        SkyengMainScreenComponent.init(findComponentDependencies()).inject(this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -36,6 +38,7 @@ internal class SkyengMainScreenFragment : BaseFragment<SkyengMainScreenPresenter
     }
 }
 
+@InjectViewState
 internal class SkyengMainScreenPresenter @Inject constructor() : BasePresenter<SkyengMainScreenView>() {
     fun logout() {
         router.exit()
