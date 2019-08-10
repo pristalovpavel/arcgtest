@@ -30,7 +30,7 @@ interface SkyengAppComponent : AppInjector {
         lateinit var appComponent: SkyengAppComponent
         fun init(context: Context) {
             this.appComponent = DaggerSkyengAppComponent.builder()
-                .skyengAuthProvider(SkyengAuthComponentProvider.init())
+                .skyengAuthDependencies(SkyengAuthComponentProvider.init())
                 .navigationDependencies(NavigationComponentProvider.init())
                 .build()
         }

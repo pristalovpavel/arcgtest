@@ -4,5 +4,4 @@ include ':app_skyeng',
         ':core_navigation',
         ':core_utils',
 
-        ':feature_auth_api',
-        ':feature_auth_skyeng_impl'
+        ':feature_auth_skyeng'

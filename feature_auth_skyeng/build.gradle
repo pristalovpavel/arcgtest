@@ -1,5 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion toolVersions.compileSdkVersion
@@ -20,5 +22,11 @@ android {
 }
 
 dependencies {
-    api "androidx.appcompat:appcompat:$libVersions.appcompat"
+
+    implementation project(':core_mvp_moxy')
+    implementation project(':core_utils')
+    implementation project(':core_navigation')
+
+    kapt "com.google.dagger:dagger-compiler:$libVersions.dagger"
+
 }
