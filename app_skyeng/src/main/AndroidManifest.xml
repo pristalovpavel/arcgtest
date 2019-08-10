@@ -2,7 +2,7 @@
           package="arch.module.skyeng">
 
     <application
-            android:name=".App"
+            android:name=".SkyengApp"
             android:label="@string/app_name"
             android:icon="@mipmap/ic_launcher"
             android:theme="@style/AppTheme">

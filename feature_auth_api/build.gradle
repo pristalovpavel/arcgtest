@@ -1,0 +1,35 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion toolVersions.compileSdkVersion
+    buildToolsVersion toolVersions.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion toolVersions.minSdkVersion
+        targetSdkVersion toolVersions.targetSdkVersion
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$toolVersions.kotlin_version"
+    api "androidx.appcompat:appcompat:$libVersions.appcompat"
+    api "androidx.core:core-ktx:$libVersions.appcompat"
+
+    //Dagger-Android
+    api "com.google.dagger:dagger:$libVersions.dagger"
+    api "com.google.dagger:dagger-android:$libVersions.dagger"
+    api "com.google.dagger:dagger-android-support:$libVersions.dagger"
+//    kapt "com.google.dagger:dagger-compiler:$libVersions.dagger"
+//    kapt "com.google.dagger:dagger-android-processor:$libVersions.dagger"
+}

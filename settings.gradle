@@ -1,1 +1,8 @@
-include ':app_skyeng'
+include ':app_skyeng',
+
+        ':core_mvp_moxy',
+        ':core_navigation',
+        ':core_utils',
+
+        ':feature_auth_api',
+        ':feature_auth_skyeng_impl'
