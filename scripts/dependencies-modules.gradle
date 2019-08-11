@@ -17,11 +17,21 @@ plugins.apply(DependencyGraphGeneratorPlugin)
 
 def projectGenerator = new Generator(
         "Project", // Suffix for our Gradle task.
-        { dependency -> true },
+        { dependency -> exclude(dependency) },
         { dependency -> false }, // Include transitive dependencies.
         { node, dependency -> node.add(Style.FILLED, Color.rgb("#ffcb2b")) }, // Give them some color.
 )
 
+private boolean exclude(dependency) {
+    def moduleName = dependency.getModuleName()
+
+    if (moduleName.contains("runtime")) {
+        return false
+    }
+    return true
+}
+
+
 dependencyGraphGenerator {
-    generators = [Generator.ALL, projectGenerator ]
+    generators = [Generator.ALL, projectGenerator]
 }
