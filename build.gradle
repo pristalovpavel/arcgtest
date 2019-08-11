@@ -38,6 +38,21 @@ subprojects {
             }
         }
     }
+
+    pluginManager.withPlugin("kotlin-android") {
+        android {
+            kotlinOptions {
+                jvmTarget = "1.8"
+                javaParameters = true
+            }
+
+            compileOptions {
+                sourceCompatibility = '1.8'
+                targetCompatibility = '1.8'
+            }
+        }
+    }
+
     tasks.withType(Test) {
         maxParallelForks = Runtime.runtime.availableProcessors() / 2
     }
