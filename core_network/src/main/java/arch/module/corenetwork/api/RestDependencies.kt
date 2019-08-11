@@ -12,12 +12,14 @@ annotation class ErrorNetworkHandler
 
 interface RestDependencies {
 
-//    @WordsRestUrl
-//    fun provideWordsRestUrl(): String
-
 
     fun provideOkHttpClient(): OkHttpClient
 
     @ErrorNetworkHandler
     fun provideErrorNetworkHandler(): CallAdapter.Factory
+}
+
+interface UrlDependencies{
+    @WordsRestUrl
+    fun provideWordsRestUrl(): String
 }

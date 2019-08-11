@@ -25,6 +25,8 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:$libVersions.okhttp"
     api "com.squareup.okhttp3:okhttp:$libVersions.okhttp"
     api "com.squareup.retrofit2:retrofit:$libVersions.retrofit"
+    api "com.squareup.retrofit2:converter-gson:$libVersions.retrofit"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$libVersions.retrofit"
 
     kapt "com.google.dagger:dagger-compiler:$libVersions.dagger"
 }

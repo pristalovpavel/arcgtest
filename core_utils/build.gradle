@@ -23,6 +23,8 @@ dependencies {
     api "androidx.appcompat:appcompat:$libVersions.appcompat"
     api "androidx.core:core-ktx:$libVersions.appcompat"
 
-    api "com.google.dagger:dagger:$libVersions.dagger"
+    api "io.reactivex.rxjava2:rxjava:$libVersions.rxjava"
+    api "io.reactivex.rxjava2:rxandroid:$libVersions.rxandroid"
 
+    api "com.google.dagger:dagger:$libVersions.dagger"
 }
