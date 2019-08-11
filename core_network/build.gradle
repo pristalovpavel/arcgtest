@@ -1,18 +1,16 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion toolVersions.compileSdkVersion
     buildToolsVersion toolVersions.buildToolsVersion
+
     defaultConfig {
-        applicationId "arch.module.skyend"
         minSdkVersion toolVersions.minSdkVersion
         targetSdkVersion toolVersions.targetSdkVersion
-        versionCode 1
-        versionName "0.0.1"
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -22,16 +20,11 @@ android {
 }
 
 dependencies {
+    api project(':core_utils')
 
-    implementation project(':core_utils')
-    implementation project(':core_mvp_moxy')
-    implementation project(':core_navigation')
-    implementation project(':core_network')
-
-    implementation project(':feature_main_skyeng')
-    implementation project(':feature_auth_skyeng')
+    implementation "com.squareup.okhttp3:logging-interceptor:$libVersions.okhttp"
+    api "com.squareup.okhttp3:okhttp:$libVersions.okhttp"
+    api "com.squareup.retrofit2:retrofit:$libVersions.retrofit"
 
     kapt "com.google.dagger:dagger-compiler:$libVersions.dagger"
-    kapt "com.github.moxy-community:moxy-compiler:$libVersions.moxy"
-
 }

@@ -5,8 +5,11 @@ import arch.module.auth.api.SkyengAuthComponentProvider
 import arch.module.auth.api.SkyengAuthDependencies
 import arch.module.corenavigation.api.NavigationDependencies
 import arch.module.corenavigation.di.NavigationComponentProvider
+import arch.module.corenetwork.api.NetworkComponentProvider
+import arch.module.corenetwork.api.RestDependencies
 import arch.module.skyeng.SkyengApp
 import arch.module.skyeng.di.modules.AppModule
+import arch.module.skyeng.di.modules.AppSpecificDepsModule
 import arch.module.skyeng.ui.main.SkyengActivity
 import arch.module.skyengmain.api.SkyengMainScreenComponentProvider
 import arch.module.skyengmain.api.SkyengMainScreenDependencies
@@ -18,10 +21,12 @@ import javax.inject.Singleton
     dependencies = [
         SkyengAuthDependencies::class,
         NavigationDependencies::class,
-        SkyengMainScreenDependencies::class
+        SkyengMainScreenDependencies::class,
+        RestDependencies::class
     ],
     modules = [
-        AppModule::class
+        AppModule::class,
+        AppSpecificDepsModule::class
     ]
 )
 interface SkyengAppComponent : AppInjector {
@@ -39,6 +44,7 @@ interface SkyengAppComponent : AppInjector {
                 .skyengAuthDependencies(SkyengAuthComponentProvider.init())
                 .skyengMainScreenDependencies(SkyengMainScreenComponentProvider.init())
                 .navigationDependencies(NavigationComponentProvider.init())
+                .restDependencies(NetworkComponentProvider.init())
                 .build()
         }
     }

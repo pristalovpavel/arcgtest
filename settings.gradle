@@ -1,9 +1,9 @@
 include ':app_skyeng',
 
-
         ':core_mvp_moxy',
         ':core_navigation',
         ':core_utils',
+        ':core_network',
 
         ':feature_main_skyeng',
         ':feature_auth_skyeng'

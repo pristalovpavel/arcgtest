@@ -20,7 +20,6 @@ android {
 }
 
 dependencies {
-    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$toolVersions.kotlin_version"
     api "androidx.appcompat:appcompat:$libVersions.appcompat"
     api "androidx.core:core-ktx:$libVersions.appcompat"
 
