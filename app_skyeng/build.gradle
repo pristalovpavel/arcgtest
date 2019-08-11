@@ -28,8 +28,8 @@ dependencies {
     implementation project(':core_navigation')
     implementation project(':core_network')
 
-    implementation project(':feature_main_skyeng')
-    implementation project(':feature_auth_skyeng')
+    implementation project(':feature_ui_main_skyeng')
+    implementation project(':feature_ui_login_skyeng')
 
     kapt "com.google.dagger:dagger-compiler:$libVersions.dagger"
     kapt "com.github.moxy-community:moxy-compiler:$libVersions.moxy"

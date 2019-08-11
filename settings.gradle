@@ -5,6 +5,8 @@ include ':app_skyeng',
         ':core_utils',
         ':core_network',
 
-        ':feature_main_skyeng',
-        ':feature_auth_skyeng'
+        ':feature_auth',
+
+        ':feature_ui_main_skyeng',
+        ':feature_ui_login_skyeng'
 
