@@ -19,7 +19,19 @@ def projectGenerator = new Generator(
         "Project", // Suffix for our Gradle task.
         { dependency -> exclude(dependency) },
         { dependency -> false }, // Include transitive dependencies.
-        { node, dependency -> node.add(Style.FILLED, Color.rgb("#ffcb2b")) }, // Give them some color.
+        { node, dependency ->
+            def moduleName = dependency.getModuleName()
+            if (moduleName.contains("core_")) {
+                node.add(Style.FILLED, Color.rgb("#43A047")) // material 600
+            } else if (moduleName.contains("feature_ui")) {
+                node.add(Style.FILLED, Color.rgb("#039BE5"))
+            } else if (moduleName.contains("feature_")) {
+                node.add(Style.FILLED, Color.rgb("#00ACC1"))
+            } else {
+                node.add(Style.FILLED, Color.rgb("#FFB300"))
+            }
+
+        }, // Give them some color.
 )
 
 private boolean exclude(dependency) {
