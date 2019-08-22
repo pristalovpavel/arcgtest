@@ -30,6 +30,7 @@ kapt{
 
 dependencies {
 
+    implementation project(':core_network')
     implementation project(':core_mvp_moxy')
     implementation project(':core_navigation')
 

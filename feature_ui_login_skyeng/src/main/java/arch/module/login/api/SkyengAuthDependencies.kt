@@ -1,6 +1,6 @@
-package arch.module.auth.api
+package arch.module.login.api
 
-import arch.module.auth.ui.SkyengAuthScreenFactory
+import arch.module.login.ui.SkyengAuthScreenFactory
 
 
 interface SkyengAuthDependencies {

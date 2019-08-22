@@ -1,8 +1,8 @@
-package arch.module.auth.di
+package arch.module.userprofile.di
 
-import arch.module.auth.data.network.AuthRest
 import arch.module.corenetwork.api.ErrorNetworkHandler
 import arch.module.corenetwork.api.WordsRestUrl
+import arch.module.userprofile.data.network.UserProfileRest
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -12,20 +12,20 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 @Module
-class AuthModule {
+class ProfileModule {
 
-//    @Singleton
+    //    @Singleton
     @Provides
-    fun authRest(
+    fun userProfileRest(
         @ErrorNetworkHandler factory: CallAdapter.Factory,
         client: OkHttpClient,
         @WordsRestUrl url: String
-
-    ): AuthRest = Retrofit.Builder()
+    ): UserProfileRest = Retrofit.Builder()
         .baseUrl(url)
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(factory)
         .client(client)
         .build()
-        .create(AuthRest::class.java)
+        .create(UserProfileRest::class.java)
+
 }

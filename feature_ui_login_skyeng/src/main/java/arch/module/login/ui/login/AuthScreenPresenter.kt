@@ -1,4 +1,4 @@
-package arch.module.auth.ui.login
+package arch.module.login.ui.login
 
 import android.annotation.SuppressLint
 import arch.module.auth.domain.LoginUseCase

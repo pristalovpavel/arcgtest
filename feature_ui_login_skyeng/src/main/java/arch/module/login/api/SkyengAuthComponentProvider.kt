@@ -1,7 +1,7 @@
-package arch.module.auth.api
+package arch.module.login.api
 
-import arch.module.auth.ui.SkyengAuthScreenFactory
-import arch.module.auth.ui.SkyengAuthScreenFactoryImpl
+import arch.module.login.ui.SkyengAuthScreenFactory
+import arch.module.login.ui.SkyengAuthScreenFactoryImpl
 import dagger.Component
 import dagger.Module
 import dagger.Provides

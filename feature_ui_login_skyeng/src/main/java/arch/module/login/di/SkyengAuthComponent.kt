@@ -1,10 +1,11 @@
-package arch.module.auth.di
+package arch.module.login.di
 
-import arch.module.auth.ui.login.AuthScreenFragment
+import arch.module.auth.di.AuthComponentProvider
 import arch.module.corenavigation.api.NavigationDependencies
 import arch.module.corenavigation.di.PerScreen
 import arch.module.corenetwork.api.RestDependencies
 import arch.module.corenetwork.api.UrlDependencies
+import arch.module.login.ui.login.AuthScreenFragment
 import dagger.Component
 
 
@@ -26,7 +27,12 @@ internal interface SkyengAuthComponent {
         ): SkyengAuthComponent =
             DaggerSkyengAuthComponent.builder()
                 .navigationDependencies(navigation)
-                .authComponentProvider(AuthComponentProvider.init(restDependencies, urlDependencies))
+                .authComponentProvider(
+                    AuthComponentProvider.init(
+                        restDependencies,
+                        urlDependencies
+                    )
+                )
                 .build()
     }
 }

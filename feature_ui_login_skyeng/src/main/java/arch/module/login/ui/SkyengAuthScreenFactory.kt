@@ -1,7 +1,7 @@
-package arch.module.auth.ui
+package arch.module.login.ui
 
 import androidx.fragment.app.Fragment
-import arch.module.auth.ui.login.AuthScreenFragment
+import arch.module.login.ui.login.AuthScreenFragment
 
 
 interface SkyengAuthScreenFactory {

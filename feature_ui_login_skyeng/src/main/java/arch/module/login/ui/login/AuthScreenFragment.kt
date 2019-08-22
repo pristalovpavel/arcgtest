@@ -1,10 +1,10 @@
-package arch.module.auth.ui.login
+package arch.module.login.ui.login
 
 import android.os.Bundle
 import android.view.View
 import arch.module.auth.R
-import arch.module.auth.di.SkyengAuthComponent
 import arch.module.coreutils.di.findComponentDependencies
+import arch.module.login.di.SkyengAuthComponent
 import arch.module.moxymvp.ui.BaseFragment
 import arch.module.moxymvp.utils.trimmedText
 import kotlinx.android.synthetic.main.fragment_auth_screen.*
@@ -15,7 +15,8 @@ import moxy.viewstate.strategy.SkipStrategy
 import moxy.viewstate.strategy.StateStrategyType
 
 
-internal class AuthScreenFragment : BaseFragment<AuthScreenPresenter>(), AuthScreenView {
+internal class AuthScreenFragment : BaseFragment<AuthScreenPresenter>(),
+    AuthScreenView {
 
     @InjectPresenter
     override lateinit var presenter: AuthScreenPresenter

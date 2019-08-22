@@ -17,7 +17,8 @@ import moxy.presenter.ProvidePresenter
 import javax.inject.Inject
 
 
-internal class SkyengMainScreenFragment : BaseFragment<SkyengMainScreenPresenter>(), SkyengMainScreenView {
+internal class SkyengMainScreenFragment : BaseFragment<SkyengMainScreenPresenter>(),
+    SkyengMainScreenView {
 
     @InjectPresenter
     override lateinit var presenter: SkyengMainScreenPresenter
@@ -28,7 +29,7 @@ internal class SkyengMainScreenFragment : BaseFragment<SkyengMainScreenPresenter
     override fun getLayoutId(): Int = R.layout.fragment_skyeng_main_screen
 
     override fun diInject() {
-        SkyengMainScreenComponent.init(findComponentDependencies()).inject(this)
+        SkyengMainScreenComponent.init(context!!, findComponentDependencies()).inject(this)
     }
 
     @Inject
@@ -44,7 +45,8 @@ internal class SkyengMainScreenFragment : BaseFragment<SkyengMainScreenPresenter
 }
 
 @InjectViewState
-internal class SkyengMainScreenPresenter @Inject constructor() : BasePresenter<SkyengMainScreenView>() {
+internal class SkyengMainScreenPresenter @Inject constructor() :
+    BasePresenter<SkyengMainScreenView>() {
     fun logout() {
         router.exit()
     }

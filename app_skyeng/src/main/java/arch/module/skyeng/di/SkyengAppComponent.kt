@@ -1,12 +1,12 @@
 package arch.module.skyeng.di
 
 import android.content.Context
-import arch.module.auth.api.SkyengAuthComponentProvider
-import arch.module.auth.api.SkyengAuthDependencies
 import arch.module.corenavigation.api.NavigationDependencies
 import arch.module.corenavigation.di.NavigationComponentProvider
 import arch.module.corenetwork.api.NetworkComponentProvider
 import arch.module.corenetwork.api.RestDependencies
+import arch.module.login.api.SkyengAuthComponentProvider
+import arch.module.login.api.SkyengAuthDependencies
 import arch.module.skyeng.SkyengApp
 import arch.module.skyeng.di.modules.AppModule
 import arch.module.skyeng.di.modules.AppSpecificDepsModule
@@ -21,8 +21,9 @@ import javax.inject.Singleton
     dependencies = [
         SkyengAuthDependencies::class,
         NavigationDependencies::class,
-        SkyengMainScreenDependencies::class,
-        RestDependencies::class
+        RestDependencies::class,
+
+        SkyengMainScreenDependencies::class
     ],
     modules = [
         AppModule::class,
