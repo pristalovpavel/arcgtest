@@ -30,6 +30,7 @@ dependencies {
 
     implementation project(':feature_ui_main_skyeng')
     implementation project(':feature_ui_login_skyeng')
+    implementation project(':feature_userprofile')
 
     kapt "com.google.dagger:dagger-compiler:$libVersions.dagger"
     kapt "com.github.moxy-community:moxy-compiler:$libVersions.moxy"

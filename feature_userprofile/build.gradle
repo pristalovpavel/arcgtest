@@ -21,19 +21,20 @@ android {
 
 }
 
-kapt {
+kapt{
     arguments {
-        arg("moxyReflectorPackage", "arch.module.mainskyeng")
+        arg("moxyReflectorPackage", "arch.module.userprofile")
     }
 }
+
 
 dependencies {
 
     implementation project(':core_mvp_moxy')
     implementation project(':core_navigation')
-    implementation project(':feature_userprofile')
 
     kapt "com.google.dagger:dagger-compiler:$libVersions.dagger"
     kapt "com.github.moxy-community:moxy-compiler:$libVersions.moxy"
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+
+
 }

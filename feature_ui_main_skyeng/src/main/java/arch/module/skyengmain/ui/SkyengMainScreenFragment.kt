@@ -7,6 +7,8 @@ import arch.module.moxymvp.ui.BaseFragment
 import arch.module.moxymvp.ui.BasePresenter
 import arch.module.skyengmain.R
 import arch.module.skyengmain.di.SkyengMainScreenComponent
+import arch.module.userprofile.ui.UserProfileInformerWidget
+import dagger.MembersInjector
 import kotlinx.android.synthetic.main.fragment_skyeng_main_screen.*
 import moxy.InjectViewState
 import moxy.MvpView
@@ -29,12 +31,15 @@ internal class SkyengMainScreenFragment : BaseFragment<SkyengMainScreenPresenter
         SkyengMainScreenComponent.init(findComponentDependencies()).inject(this)
     }
 
+    @Inject
+    lateinit var userProfileInformerWidgetMembersInjector: MembersInjector<UserProfileInformerWidget>
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         logout.setOnClickListener {
             presenter.logout()
         }
-
+        attachWidget(userProfileInformerWidget, userProfileInformerWidgetMembersInjector)
     }
 }
 

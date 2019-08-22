@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.annotation.CallSuper
 import androidx.annotation.StringRes
 import arch.module.corenavigation.NestedNavigation
+import dagger.MembersInjector
 import moxy.MvpAppCompatFragment
 import javax.inject.Inject
 import javax.inject.Provider
@@ -41,6 +42,10 @@ abstract class BaseFragment<P : BasePresenter<*>>
         return inflater.inflate(getLayoutId(), container, false)
     }
 
+    protected fun <D, T : CoreWidget<D>> attachWidget(moxyWidget: T, members: MembersInjector<T>) {
+        members.injectMembers(moxyWidget)
+        moxyWidget.init(mvpDelegate)
+    }
 
     fun showToast(text: String) {
         context?.run {
