@@ -3,10 +3,11 @@ package arch.module.auth.di
 import arch.module.auth.domain.LoginUseCase
 import arch.module.corenetwork.api.RestDependencies
 import arch.module.corenetwork.api.UrlDependencies
+import arch.module.coreutils.di.PerFeature
 import dagger.Component
 
 
-//@Singleton
+@PerFeature
 @Component(
     dependencies = [
         RestDependencies::class, UrlDependencies::class
@@ -16,7 +17,10 @@ import dagger.Component
 interface AuthComponentProvider {
 
     companion object {
-        fun init(restDependencies: RestDependencies, urlDependencies: UrlDependencies): AuthComponentProvider {
+        fun init(
+            restDependencies: RestDependencies,
+            urlDependencies: UrlDependencies
+        ): AuthComponentProvider {
             return DaggerAuthComponentProvider.builder()
                 .restDependencies(restDependencies)
                 .urlDependencies(urlDependencies)

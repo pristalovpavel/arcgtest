@@ -11,7 +11,7 @@ import javax.inject.Singleton
 @Module
 class SkyengAuthExternalModule {
     @Provides
-//    @Singleton
+    @Singleton
     fun provideSkyengAuthProvider(): SkyengAuthScreenFactory =
         SkyengAuthScreenFactoryImpl()
 }

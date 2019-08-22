@@ -3,6 +3,7 @@ package arch.module.auth.di
 import arch.module.auth.data.network.AuthRest
 import arch.module.corenetwork.api.ErrorNetworkHandler
 import arch.module.corenetwork.api.WordsRestUrl
+import arch.module.coreutils.di.PerFeature
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -14,7 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 @Module
 class AuthModule {
 
-//    @Singleton
+    @PerFeature
     @Provides
     fun authRest(
         @ErrorNetworkHandler factory: CallAdapter.Factory,

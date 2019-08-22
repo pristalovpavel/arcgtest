@@ -1,4 +1,4 @@
-package arch.module.corenavigation.di
+package arch.module.coreutils.di
 
 import javax.inject.Scope
 
