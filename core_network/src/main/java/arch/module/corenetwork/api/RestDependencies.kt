@@ -1,5 +1,6 @@
 package arch.module.corenetwork.api
 
+import arch.module.corenetwork.data.TokenHolder
 import okhttp3.OkHttpClient
 import retrofit2.CallAdapter
 import javax.inject.Qualifier
@@ -12,6 +13,7 @@ annotation class ErrorNetworkHandler
 
 interface RestDependencies {
 
+    fun provideTokenHolder(): TokenHolder
 
     fun provideOkHttpClient(): OkHttpClient
 
@@ -19,7 +21,7 @@ interface RestDependencies {
     fun provideErrorNetworkHandler(): CallAdapter.Factory
 }
 
-interface UrlDependencies{
+interface UrlDependencies {
     @WordsRestUrl
     fun provideWordsRestUrl(): String
 }

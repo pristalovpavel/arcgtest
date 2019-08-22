@@ -10,10 +10,10 @@ object OkHttpConfigurator {
     private const val TIMEOUT_SECONDS = 80
 
 
-    operator fun invoke(): OkHttpClient.Builder {
+    operator fun invoke(token: TokenHolder): OkHttpClient.Builder {
         val builder = OkHttpClient.Builder()
         builder.addInterceptor { chain ->
-            //            val authorization = accountManager.getAuthorization()
+            val authorization = token.getAuthorization()
             val request = chain.request()
             var builderRequest: Request.Builder = request.newBuilder()
 
@@ -29,11 +29,11 @@ object OkHttpConfigurator {
 //                .addHeader("Skyeng-Mobile-App-Id", BuildConfig.SUBSCRIPTION_APP_ID)
 //                .addHeader("appId", BuildConfig.SUBSCRIPTION_APP_ID)
 
-//            if (authorization != null && !hasAuth) {
-//
-//                builderRequest = builderRequest
-//                    .addHeader("Authorization", authorization!!)
-//            }
+            if (authorization != null && !hasAuth) {
+
+                builderRequest = builderRequest
+                    .addHeader("Authorization", authorization!!)
+            }
             val proceed = chain.proceed(builderRequest.build())
             val headers = proceed.headers
 //            preferences.setLastServerTime(headers.getDate("Date"))
