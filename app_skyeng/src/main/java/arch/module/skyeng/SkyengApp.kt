@@ -11,7 +11,6 @@ import moxy.RegisterMoxyReflectorPackages
 @RegisterMoxyReflectorPackages(
     value = [
         "arch.module.auth",
-        "arch.module.mainskyeng",
         "arch.module.userprofile"
     ]
 )

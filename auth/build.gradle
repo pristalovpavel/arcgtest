@@ -1,18 +1,18 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 
+
 android {
     compileSdkVersion toolVersions.compileSdkVersion
     buildToolsVersion toolVersions.buildToolsVersion
+
     defaultConfig {
-        applicationId "arch.module.skyend"
         minSdkVersion toolVersions.minSdkVersion
         targetSdkVersion toolVersions.targetSdkVersion
-        versionCode 1
-        versionName "0.0.1"
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -21,14 +21,14 @@ android {
     }
 }
 
+kapt{
+    arguments {
+        arg("moxyReflectorPackage", "arch.module.auth")
+    }
+}
+
 dependencies {
-
     implementation project(':core')
-
-    implementation project(':auth')
-    implementation project(':userprofile')
-
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 
     kapt "com.google.dagger:dagger-compiler:$libVersions.dagger"
     kapt "com.github.moxy-community:moxy-compiler:$libVersions.moxy"

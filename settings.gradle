@@ -2,9 +2,6 @@ include ':app_skyeng',
 
         ':core',
 
-        ':feature_auth',
-        ':feature_userprofile',
-
-        ':feature_ui_main_skyeng',
-        ':feature_ui_login_skyeng'
+        ':auth',
+        ':userprofile'
 
