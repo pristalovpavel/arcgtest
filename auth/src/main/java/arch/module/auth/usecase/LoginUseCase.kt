@@ -1,8 +1,8 @@
-package arch.module.auth.domain
+package arch.module.auth.usecase
 
-import arch.module.auth.data.network.AuthRest
-import arch.module.auth.data.network.LoginRequest
+import arch.module.auth.model.LoginRequest
 import arch.module.core.usecase.data.other.TokenHolder
+import arch.module.auth.usecase.data.network.AuthRest
 import dagger.Reusable
 import io.reactivex.Completable
 import javax.inject.Inject

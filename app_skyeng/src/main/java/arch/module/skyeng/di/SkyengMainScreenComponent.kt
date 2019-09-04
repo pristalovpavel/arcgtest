@@ -1,9 +1,10 @@
 package arch.module.skyeng.di
 
 import android.content.Context
-import arch.module.core.di.NavigationDependencies
+import arch.module.core.di.CoreDependencies
 import arch.module.core.di.PerScreen
-import arch.module.userprofile.api.UserProfileComponentProvider
+import arch.module.core.di.findComponentDependencies
+import arch.module.skyeng.di.modules.SkyengMainScreenCoordinatorModule
 import arch.module.userprofile.api.UserProfileDeps
 import dagger.Component
 
@@ -11,8 +12,11 @@ import dagger.Component
 @PerScreen
 @Component(
     dependencies = [
-        NavigationDependencies::class,
+        CoreDependencies::class,
         UserProfileDeps::class
+    ],
+    modules = [
+        SkyengMainScreenCoordinatorModule::class
     ]
 )
 internal interface SkyengMainScreenComponent {
@@ -21,14 +25,12 @@ internal interface SkyengMainScreenComponent {
     companion object {
         fun init(
             context: Context,
-            appComponent: NavigationDependencies
+            appComponent: CoreDependencies
         ): SkyengMainScreenComponent {
-            val userProfileDeps = UserProfileComponentProvider.init(context)
-
             return DaggerSkyengMainScreenComponent
                 .builder()
-                .navigationDependencies(appComponent)
-                .userProfileDeps(userProfileDeps)
+                .coreDependencies(appComponent)
+                .userProfileDeps(context.findComponentDependencies())
                 .build()
         }
     }

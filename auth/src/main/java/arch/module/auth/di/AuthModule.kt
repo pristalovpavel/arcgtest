@@ -1,9 +1,9 @@
 package arch.module.auth.di
 
-import arch.module.auth.data.network.AuthRest
+import arch.module.auth.usecase.data.network.AuthRest
 import arch.module.core.di.ErrorNetworkHandler
+import arch.module.core.di.PerScreen
 import arch.module.core.di.WordsRestUrl
-import arch.module.core.di.PerFeature
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -15,7 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 @Module
 class AuthModule {
 
-    @PerFeature
+    @PerScreen
     @Provides
     fun authRest(
         @ErrorNetworkHandler factory: CallAdapter.Factory,

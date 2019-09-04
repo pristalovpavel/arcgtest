@@ -4,13 +4,11 @@ import android.os.Bundle
 import android.view.View
 import arch.module.core.di.findComponentDependencies
 import arch.module.core.ui.base.BaseFragment
-import arch.module.core.ui.base.BasePresenter
 import arch.module.skyeng.R
 import arch.module.skyeng.di.SkyengMainScreenComponent
 import arch.module.userprofile.ui.UserProfileInformerWidget
 import dagger.MembersInjector
 import kotlinx.android.synthetic.main.fragment_skyeng_main_screen.*
-import moxy.InjectViewState
 import moxy.MvpView
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
@@ -18,7 +16,7 @@ import javax.inject.Inject
 
 
 internal class SkyengMainScreenFragment : BaseFragment<SkyengMainScreenPresenter>(),
-    SkyengMainScreenView {
+    ISkyengMainScreenView {
 
     @InjectPresenter
     override lateinit var presenter: SkyengMainScreenPresenter
@@ -44,12 +42,4 @@ internal class SkyengMainScreenFragment : BaseFragment<SkyengMainScreenPresenter
     }
 }
 
-@InjectViewState
-internal class SkyengMainScreenPresenter @Inject constructor() :
-    BasePresenter<SkyengMainScreenView>() {
-    fun logout() {
-        router.exit()
-    }
-}
-
-internal interface SkyengMainScreenView : MvpView
+internal interface ISkyengMainScreenView : MvpView

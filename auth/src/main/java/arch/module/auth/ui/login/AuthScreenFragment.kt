@@ -3,8 +3,6 @@ package arch.module.auth.ui.login
 import android.os.Bundle
 import android.view.View
 import arch.module.auth.R
-import arch.module.auth.di.SkyengAuthComponent
-import arch.module.core.di.findComponentDependencies
 import arch.module.core.ui.base.BaseFragment
 import arch.module.core.utils.ext.trimmedText
 import kotlinx.android.synthetic.main.fragment_auth_screen.*
@@ -15,7 +13,7 @@ import moxy.viewstate.strategy.SkipStrategy
 import moxy.viewstate.strategy.StateStrategyType
 
 
-class AuthScreenFragment : BaseFragment<AuthScreenPresenter>(),
+abstract class AuthScreenFragment : BaseFragment<AuthScreenPresenter>(),
     AuthScreenView {
 
     @InjectPresenter
@@ -25,14 +23,6 @@ class AuthScreenFragment : BaseFragment<AuthScreenPresenter>(),
     override fun providePresenter(): AuthScreenPresenter = super.providePresenter()
 
     override fun getLayoutId(): Int = R.layout.fragment_auth_screen
-
-    override fun diInject() {
-        SkyengAuthComponent.init(
-            findComponentDependencies(),
-            findComponentDependencies(),
-            findComponentDependencies()
-        ).inject(this)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import arch.module.core.other.MvpRouter
 import arch.module.core.other.NestedNavigation
 import arch.module.skyeng.R
-import arch.module.skyeng.di.AppInjector
 import arch.module.skyeng.di.SkyengAppComponent.Companion.appComponent
 import arch.module.skyeng.ui.SkyengRoutingScreen
 import ru.terrakok.cicerone.NavigatorHolder
@@ -17,9 +16,6 @@ class SkyengActivity : AppCompatActivity() {
 
     @Inject
     lateinit var router: MvpRouter
-
-    @Inject
-    lateinit var appInjector: AppInjector
 
     @Inject
     lateinit var navigatorHolder: NavigatorHolder
@@ -35,7 +31,8 @@ class SkyengActivity : AppCompatActivity() {
         }
     }
 
-    private val navigator by lazy { SkyengNavigator(this, appInjector) }
+    private val navigator by lazy { SkyengNavigator(this) }
+
     override fun onResumeFragments() {
         super.onResumeFragments()
         navigatorHolder.setNavigator(navigator)

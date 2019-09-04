@@ -1,4 +1,4 @@
-package arch.module.auth.data.network
+package arch.module.auth.model
 
 import com.google.gson.annotations.SerializedName
 
