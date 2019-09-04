@@ -28,6 +28,8 @@ interface AwordAppComponent : AppInjector {
     fun inject(app: AwordApp)
     fun inject(activity: AwordActivity)
 
+    fun welcomeComponentBuilder(): WelcomeComponent.Builder
+
     companion object {
         lateinit var appComponent: AwordAppComponent
         fun init(context: Context) {
@@ -37,4 +39,6 @@ interface AwordAppComponent : AppInjector {
                 .build()
         }
     }
+
+
 }

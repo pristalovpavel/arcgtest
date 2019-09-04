@@ -7,6 +7,8 @@ import androidx.fragment.app.FragmentActivity
 import arch.module.auth.ui.login.AwordAuthScreenFragment
 import arch.module.aword.R
 import arch.module.aword.ui.AwordRoutingScreen.AUTH
+import arch.module.aword.ui.AwordRoutingScreen.WELCOME
+import arch.module.aword.ui.welcome.WelcomeFragment
 import ru.terrakok.cicerone.android.SupportAppNavigator
 
 
@@ -20,6 +22,7 @@ class AwordNavigator(
 
     override fun createFragment(screenKey: String?, data: Any?): Fragment? = when (screenKey) {
         AUTH -> AwordAuthScreenFragment()
+        WELCOME -> WelcomeFragment.newInstance()
         else -> null
     }
 }
