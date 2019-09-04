@@ -26,7 +26,7 @@ class AwordActivity : AppCompatActivity() {
         setContentView(R.layout.fragment_single_container)
 
         if (savedInstanceState == null) {
-            router.replaceScreen(AwordRoutingScreen.AUTH)
+            router.replaceScreen(AwordRoutingScreen.LOGIN_FLOW)
 //            router.replaceScreen(SkyengRoutingScreen.SKYNEG_MAIN)
         }
     }

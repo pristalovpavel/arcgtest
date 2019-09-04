@@ -9,4 +9,8 @@ annotation class PerFeature
 
 @Scope
 @Retention(AnnotationRetention.RUNTIME)
+annotation class PerFlow
+
+@Scope
+@Retention(AnnotationRetention.RUNTIME)
 annotation class PerScreen

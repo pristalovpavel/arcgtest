@@ -11,6 +11,7 @@ import dagger.Component
 @PerScreen
 @Component(
     dependencies = [
+        FlowLoginComponent::class,
         NavigationDependencies::class,
         RestDependencies::class,
         UrlDependencies::class,
@@ -27,9 +28,10 @@ interface AwordAuthComponent {
 
     companion object {
         fun init(
-           context: Context
+            context: Context
         ): AwordAuthComponent =
             DaggerAwordAuthComponent.builder()
+                .flowLoginComponent(FlowLoginComponent.flowLoginComponent)
                 .navigationDependencies(context.findComponentDependencies())
                 .restDependencies(context.findComponentDependencies())
                 .urlDependencies(context.findComponentDependencies())
