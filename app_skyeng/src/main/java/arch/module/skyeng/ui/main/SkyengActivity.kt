@@ -2,8 +2,8 @@ package arch.module.skyeng.ui.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import arch.module.corenavigation.MvpRouter
-import arch.module.corenavigation.NestedNavigation
+import arch.module.core.other.MvpRouter
+import arch.module.core.other.NestedNavigation
 import arch.module.skyeng.R
 import arch.module.skyeng.di.AppInjector
 import arch.module.skyeng.di.SkyengAppComponent.Companion.appComponent

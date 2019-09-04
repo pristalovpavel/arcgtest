@@ -2,7 +2,7 @@ package arch.module.login.ui.login
 
 import android.annotation.SuppressLint
 import arch.module.auth.domain.LoginUseCase
-import arch.module.moxymvp.ui.BasePresenter
+import arch.module.core.ui.base.BasePresenter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import moxy.InjectViewState
 import javax.inject.Inject

@@ -1,9 +1,9 @@
 package arch.module.skyeng.di
 
 import arch.module.login.api.SkyengAuthDependencies
-import arch.module.corenavigation.api.NavigationDependencies
-import arch.module.corenetwork.api.RestDependencies
-import arch.module.corenetwork.api.UrlDependencies
+import arch.module.core.di.NavigationDependencies
+import arch.module.core.di.RestDependencies
+import arch.module.core.di.UrlDependencies
 import arch.module.skyengmain.api.SkyengMainScreenDependencies
 
 

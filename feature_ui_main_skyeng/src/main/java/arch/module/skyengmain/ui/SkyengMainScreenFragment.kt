@@ -2,9 +2,9 @@ package arch.module.skyengmain.ui
 
 import android.os.Bundle
 import android.view.View
-import arch.module.coreutils.di.findComponentDependencies
-import arch.module.moxymvp.ui.BaseFragment
-import arch.module.moxymvp.ui.BasePresenter
+import arch.module.core.di.findComponentDependencies
+import arch.module.core.ui.base.BaseFragment
+import arch.module.core.ui.base.BasePresenter
 import arch.module.skyengmain.R
 import arch.module.skyengmain.di.SkyengMainScreenComponent
 import arch.module.userprofile.ui.UserProfileInformerWidget

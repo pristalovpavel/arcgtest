@@ -1,10 +1,10 @@
 package arch.module.skyeng.di
 
 import android.content.Context
-import arch.module.corenavigation.api.NavigationDependencies
-import arch.module.corenavigation.di.NavigationComponentProvider
-import arch.module.corenetwork.api.NetworkComponentProvider
-import arch.module.corenetwork.api.RestDependencies
+import arch.module.core.di.NavigationDependencies
+import arch.module.core.di.NavigationComponentProvider
+import arch.module.core.di.NetworkComponentProvider
+import arch.module.core.di.RestDependencies
 import arch.module.login.api.SkyengAuthComponentProvider
 import arch.module.login.api.SkyengAuthDependencies
 import arch.module.skyeng.SkyengApp

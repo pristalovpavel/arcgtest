@@ -1,9 +1,9 @@
 package arch.module.auth.di
 
 import arch.module.auth.data.network.AuthRest
-import arch.module.corenetwork.api.ErrorNetworkHandler
-import arch.module.corenetwork.api.WordsRestUrl
-import arch.module.coreutils.di.PerFeature
+import arch.module.core.di.ErrorNetworkHandler
+import arch.module.core.di.WordsRestUrl
+import arch.module.core.di.PerFeature
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient

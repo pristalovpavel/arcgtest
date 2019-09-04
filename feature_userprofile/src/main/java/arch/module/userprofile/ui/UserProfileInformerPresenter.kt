@@ -1,7 +1,7 @@
 package arch.module.userprofile.ui
 
 import android.annotation.SuppressLint
-import arch.module.moxymvp.ui.BasePresenter
+import arch.module.core.ui.base.BasePresenter
 import arch.module.userprofile.domain.GetUserInfoUseCase
 import io.reactivex.android.schedulers.AndroidSchedulers
 import moxy.InjectViewState

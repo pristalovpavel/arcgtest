@@ -1,7 +1,7 @@
 package arch.module.userprofile.api
 
 import android.content.Context
-import arch.module.coreutils.di.findComponentDependencies
+import arch.module.core.di.findComponentDependencies
 import arch.module.userprofile.di.UserProfileProvider
 import arch.module.userprofile.domain.GetUserInfoUseCase
 import dagger.Component

@@ -1,7 +1,7 @@
 package arch.module.userprofile.di
 
-import arch.module.corenetwork.api.ErrorNetworkHandler
-import arch.module.corenetwork.api.WordsRestUrl
+import arch.module.core.di.ErrorNetworkHandler
+import arch.module.core.di.WordsRestUrl
 import arch.module.userprofile.data.network.UserProfileRest
 import dagger.Module
 import dagger.Provides

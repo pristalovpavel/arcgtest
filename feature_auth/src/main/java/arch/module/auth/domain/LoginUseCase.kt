@@ -2,7 +2,7 @@ package arch.module.auth.domain
 
 import arch.module.auth.data.network.AuthRest
 import arch.module.auth.data.network.LoginRequest
-import arch.module.corenetwork.data.TokenHolder
+import arch.module.core.usecase.data.other.TokenHolder
 import dagger.Reusable
 import io.reactivex.Completable
 import javax.inject.Inject

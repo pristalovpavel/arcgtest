@@ -3,10 +3,10 @@ package arch.module.login.ui.login
 import android.os.Bundle
 import android.view.View
 import arch.module.auth.R
-import arch.module.coreutils.di.findComponentDependencies
+import arch.module.core.di.findComponentDependencies
 import arch.module.login.di.SkyengAuthComponent
-import arch.module.moxymvp.ui.BaseFragment
-import arch.module.moxymvp.utils.trimmedText
+import arch.module.core.ui.base.BaseFragment
+import arch.module.core.utils.ext.trimmedText
 import kotlinx.android.synthetic.main.fragment_auth_screen.*
 import moxy.MvpView
 import moxy.presenter.InjectPresenter

@@ -29,8 +29,8 @@ kapt {
 
 dependencies {
 
-    implementation project(':core_mvp_moxy')
-    implementation project(':core_navigation')
+    implementation project(':core')
+
     implementation project(':feature_userprofile')
 
     kapt "com.google.dagger:dagger-compiler:$libVersions.dagger"

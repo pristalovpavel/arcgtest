@@ -3,7 +3,7 @@ package arch.module.userprofile.ui
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.Toast
-import arch.module.moxymvp.ui.CoreWidget
+import arch.module.core.ui.base.CoreWidget
 import arch.module.userprofile.R
 import arch.module.userprofile.domain.UserInfo
 import kotlinx.android.synthetic.main.view_userprofileinformer_layout.view.*

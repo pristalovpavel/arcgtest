@@ -1,8 +1,8 @@
 package arch.module.skyengmain.di
 
 import android.content.Context
-import arch.module.corenavigation.api.NavigationDependencies
-import arch.module.coreutils.di.PerScreen
+import arch.module.core.di.NavigationDependencies
+import arch.module.core.di.PerScreen
 import arch.module.skyengmain.ui.SkyengMainScreenFragment
 import arch.module.userprofile.api.UserProfileComponentProvider
 import arch.module.userprofile.api.UserProfileDeps

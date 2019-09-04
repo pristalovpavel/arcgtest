@@ -1,6 +1,6 @@
 package arch.module.skyeng.di.modules
 
-import arch.module.corenetwork.api.WordsRestUrl
+import arch.module.core.di.WordsRestUrl
 import dagger.Module
 import dagger.Provides
 

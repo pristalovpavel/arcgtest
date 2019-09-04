@@ -1,9 +1,9 @@
 package arch.module.auth.di
 
 import arch.module.auth.domain.LoginUseCase
-import arch.module.corenetwork.api.RestDependencies
-import arch.module.corenetwork.api.UrlDependencies
-import arch.module.coreutils.di.PerFeature
+import arch.module.core.di.RestDependencies
+import arch.module.core.di.UrlDependencies
+import arch.module.core.di.PerFeature
 import dagger.Component
 
 

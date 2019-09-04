@@ -1,7 +1,7 @@
 package arch.module.skyeng
 
 import android.app.Application
-import arch.module.coreutils.di.ComponentDependenciesProvider
+import arch.module.core.di.ComponentDependenciesProvider
 import arch.module.skyeng.di.SkyengAppComponent
 import arch.module.skyeng.di.SkyengAppComponent.Companion.appComponent
 import moxy.RegisterMoxyReflectorPackages

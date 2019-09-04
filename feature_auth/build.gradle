@@ -19,8 +19,7 @@ android {
     }
 }
 dependencies {
-    api project(':core_utils')
-    api project(':core_network')
+    implementation project(':core')
 
     kapt "com.google.dagger:dagger-compiler:$libVersions.dagger"
 

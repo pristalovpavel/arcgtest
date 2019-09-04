@@ -1,0 +1,44 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion toolVersions.compileSdkVersion
+    buildToolsVersion toolVersions.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion toolVersions.minSdkVersion
+        targetSdkVersion toolVersions.targetSdkVersion
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    api "androidx.appcompat:appcompat:$libVersions.appcompat"
+    api "androidx.core:core-ktx:$libVersions.appcompat"
+
+    api "io.reactivex.rxjava2:rxjava:$libVersions.rxjava"
+    api "io.reactivex.rxjava2:rxandroid:$libVersions.rxandroid"
+
+    api "com.google.dagger:dagger:$libVersions.dagger"
+    api "ru.terrakok.cicerone:cicerone:$libVersions.cicerone"
+
+    implementation "com.squareup.okhttp3:logging-interceptor:$libVersions.okhttp"
+    api "com.squareup.okhttp3:okhttp:$libVersions.okhttp"
+    api "com.squareup.retrofit2:retrofit:$libVersions.retrofit"
+    api "com.squareup.retrofit2:converter-gson:$libVersions.retrofit"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$libVersions.retrofit"
+
+    kapt "com.google.dagger:dagger-compiler:$libVersions.dagger"
+
+
+    api "com.github.moxy-community:moxy:moxyVersion$libVersions.moxy"
+    api "com.github.moxy-community:moxy-androidx:$libVersions.moxy"
+}

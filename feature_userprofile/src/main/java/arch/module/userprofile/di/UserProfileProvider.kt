@@ -1,7 +1,7 @@
 package arch.module.userprofile.di
 
-import arch.module.corenetwork.api.RestDependencies
-import arch.module.corenetwork.api.UrlDependencies
+import arch.module.core.di.RestDependencies
+import arch.module.core.di.UrlDependencies
 import arch.module.userprofile.api.UserProfileDeps
 import dagger.Component
 
