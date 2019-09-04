@@ -4,7 +4,7 @@ import android.content.Context
 import arch.module.core.di.CoreComponentProvider
 import arch.module.core.di.CoreDependencies
 import arch.module.skyeng.SkyengApp
-import arch.module.skyeng.di.modules.AndroidModule
+import arch.module.core.di.modules.AndroidModule
 import arch.module.skyeng.di.modules.AppSpecificDepsModule
 import arch.module.skyeng.ui.root.SkyengActivity
 import arch.module.userprofile.di.ProfileModule

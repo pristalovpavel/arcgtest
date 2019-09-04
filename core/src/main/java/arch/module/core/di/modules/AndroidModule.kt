@@ -1,4 +1,4 @@
-package arch.module.skyeng.di.modules
+package arch.module.core.di.modules
 
 import android.content.Context
 import android.content.res.Resources

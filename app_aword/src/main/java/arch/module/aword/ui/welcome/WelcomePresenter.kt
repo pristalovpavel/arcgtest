@@ -11,6 +11,7 @@ class WelcomePresenter @Inject constructor(
     private val coordinator: IWelcomeCoordinator
 ) : BasePresenter<IWelcomeView>() {
     fun showNextScreen() {
-        coordinator.showNextScreen()
+        viewState.showNotification()
+//        coordinator.showNextScreen()
     }
 }

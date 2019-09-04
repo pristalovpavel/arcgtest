@@ -1,5 +1,6 @@
 package arch.module.aword.ui.root
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import arch.module.aword.R
@@ -29,6 +30,12 @@ class AwordActivity : AppCompatActivity() {
             router.replaceScreen(AwordRoutingScreen.LOGIN_FLOW)
 //            router.replaceScreen(SkyengRoutingScreen.SKYNEG_MAIN)
         }
+    }
+
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+
+        router.replaceScreen(AwordRoutingScreen.HELLO)
     }
 
     private val navigator by lazy { AwordNavigator(this) }

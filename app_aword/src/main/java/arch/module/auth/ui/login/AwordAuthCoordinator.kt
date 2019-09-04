@@ -9,6 +9,6 @@ class AwordAuthCoordinator @Inject constructor(
     private val router: FlowRouter
 ) : IAuthCoordinator {
     override fun openMainScreen() {
-        router.replaceScreen(LoginFlowRoutingScreen.WELCOME)
+        router.navigateTo(LoginFlowRoutingScreen.WELCOME)
     }
 }
