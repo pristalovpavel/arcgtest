@@ -1,17 +1,17 @@
-package arch.module.skyeng.ui.root
+package arch.module.aword.ui.root
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import arch.module.aword.R
+import arch.module.aword.di.AwordAppComponent.Companion.appComponent
+import arch.module.aword.ui.AwordRoutingScreen
 import arch.module.core.other.MvpRouter
 import arch.module.core.other.NestedNavigation
-import arch.module.skyeng.R
-import arch.module.skyeng.di.SkyengAppComponent.Companion.appComponent
-import arch.module.skyeng.ui.SkyengRoutingScreen
 import ru.terrakok.cicerone.NavigatorHolder
 import javax.inject.Inject
 
 
-class SkyengActivity : AppCompatActivity() {
+class AwordActivity : AppCompatActivity() {
 
 
     @Inject
@@ -26,12 +26,12 @@ class SkyengActivity : AppCompatActivity() {
         setContentView(R.layout.fragment_single_container)
 
         if (savedInstanceState == null) {
-            router.replaceScreen(SkyengRoutingScreen.AUTH)
+            router.replaceScreen(AwordRoutingScreen.AUTH)
 //            router.replaceScreen(SkyengRoutingScreen.SKYNEG_MAIN)
         }
     }
 
-    private val navigator by lazy { SkyengNavigator(this) }
+    private val navigator by lazy { AwordNavigator(this) }
 
     override fun onResumeFragments() {
         super.onResumeFragments()

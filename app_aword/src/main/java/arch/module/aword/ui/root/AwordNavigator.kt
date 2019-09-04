@@ -1,17 +1,16 @@
-package arch.module.skyeng.ui.root
+package arch.module.aword.ui.root
 
 import android.content.Context
 import android.content.Intent
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import arch.module.auth.ui.login.SkyengAuthScreenFragment
-import arch.module.skyeng.R
-import arch.module.skyeng.ui.SkyengRoutingScreen
-import arch.module.skyeng.ui.mainscreen.SkyengMainScreenFragment
+import arch.module.auth.ui.login.AwordAuthScreenFragment
+import arch.module.aword.R
+import arch.module.aword.ui.AwordRoutingScreen.AUTH
 import ru.terrakok.cicerone.android.SupportAppNavigator
 
 
-class SkyengNavigator(
+class AwordNavigator(
     activity: FragmentActivity
 ) : SupportAppNavigator(activity, R.id.layout_child_fragment_container) {
 
@@ -20,8 +19,7 @@ class SkyengNavigator(
     }
 
     override fun createFragment(screenKey: String?, data: Any?): Fragment? = when (screenKey) {
-        SkyengRoutingScreen.AUTH -> SkyengAuthScreenFragment()
-        SkyengRoutingScreen.MAIN -> SkyengMainScreenFragment()
+        AUTH -> AwordAuthScreenFragment()
         else -> null
     }
 }

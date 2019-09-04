@@ -1,12 +1,12 @@
-package arch.module.skyeng.di
+package arch.module.aword.di
 
 import android.content.Context
+import arch.module.aword.AwordApp
+import arch.module.aword.di.modules.AppSpecificDepsModule
+import arch.module.aword.ui.root.AwordActivity
 import arch.module.core.di.CoreComponentProvider
 import arch.module.core.di.CoreDependencies
-import arch.module.skyeng.SkyengApp
 import arch.module.skyeng.di.modules.AndroidModule
-import arch.module.skyeng.di.modules.AppSpecificDepsModule
-import arch.module.skyeng.ui.root.SkyengActivity
 import arch.module.userprofile.di.ProfileModule
 import dagger.Component
 import javax.inject.Singleton
@@ -23,15 +23,15 @@ import javax.inject.Singleton
         ProfileModule::class
     ]
 )
-interface SkyengAppComponent : AppInjector {
+interface AwordAppComponent : AppInjector {
 
-    fun inject(app: SkyengApp)
-    fun inject(activity: SkyengActivity)
+    fun inject(app: AwordApp)
+    fun inject(activity: AwordActivity)
 
     companion object {
-        lateinit var appComponent: SkyengAppComponent
+        lateinit var appComponent: AwordAppComponent
         fun init(context: Context) {
-            this.appComponent = DaggerSkyengAppComponent.builder()
+            this.appComponent = DaggerAwordAppComponent.builder()
                 .androidModule(AndroidModule(context))
                 .coreDependencies(CoreComponentProvider.init())
                 .build()

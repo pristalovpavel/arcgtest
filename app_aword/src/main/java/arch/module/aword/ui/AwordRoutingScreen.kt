@@ -1,7 +1,7 @@
-package arch.module.skyeng.ui
+package arch.module.aword.ui
 
 
-object SkyengRoutingScreen {
+object AwordRoutingScreen {
 
     const val AUTH = "AUTH"
     const val MAIN = "MAIN"
