@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import arch.module.skyeng.R
 import arch.module.skyeng.coordinators.CoordinatorParamHolder
 import kotlinx.android.synthetic.main.fragment_screena_layout.*
@@ -44,16 +45,34 @@ class ScreenAFragment : MvpAppCompatFragment(), IScreenAView {
             presenter.openNextScreen()
         }
     }
+
+    override fun showToast() {
+        Toast.makeText(context!!, "Done", Toast.LENGTH_SHORT).show()
+    }
 }
 
 sealed class ScreenAOutCmd
 
 object GoPressed : ScreenAOutCmd()
 
+class OnCreate(val input: ScreenAIn) : ScreenAOutCmd()
+
+
+interface ScreenAIn {
+    fun done()
+}
+
 @InjectViewState
 class ScreenAPresenter constructor(
     private val out: (ScreenAOutCmd) -> Unit
-) : MvpPresenter<IScreenAView>() {
+) : MvpPresenter<IScreenAView>(), ScreenAIn {
+    override fun onFirstViewAttach() {
+        out(OnCreate(this))
+    }
+
+    override fun done() {
+        viewState.showToast()
+    }
 
     fun openNextScreen() {
         out(GoPressed)
@@ -62,5 +81,5 @@ class ScreenAPresenter constructor(
 }
 
 interface IScreenAView : MvpView {
-
+    fun showToast()
 }

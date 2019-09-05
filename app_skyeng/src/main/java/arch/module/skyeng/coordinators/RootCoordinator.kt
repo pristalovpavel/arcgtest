@@ -2,6 +2,8 @@ package arch.module.skyeng.coordinators
 
 import arch.module.skyeng.ui.NavigationConst
 import arch.module.skyeng.ui.screenA.GoPressed
+import arch.module.skyeng.ui.screenA.OnCreate
+import arch.module.skyeng.ui.screenA.ScreenAIn
 import arch.module.skyeng.ui.screenA.ScreenAOutCmd
 import arch.module.skyeng.ui.screenB.DonePressed
 import arch.module.skyeng.ui.screenB.ScreenBOutCmd
@@ -12,17 +14,23 @@ class RootCoordinator(
     private val router: Router
 ) {
 
+    private lateinit var screenAIn: ScreenAIn
+
     fun showStartScreen() {
         val qwe: (ScreenAOutCmd) -> Unit = {
             when (it) {
-                GoPressed -> router.navigateTo(NavigationConst.SCREEN_B)
+                is GoPressed -> router.navigateTo(NavigationConst.SCREEN_B)
+                is OnCreate -> screenAIn = it.input
             }
         }
         CoordinatorParamHolder.registerOut("key", qwe)
 
         val qwe2: (ScreenBOutCmd) -> Unit = {
             when (it) {
-                DonePressed -> router.exit()
+                is DonePressed -> {
+                    screenAIn.done()
+                    router.exit()
+                }
             }
         }
         CoordinatorParamHolder.registerOut("key2", qwe2)
