@@ -1,4 +1,4 @@
-package arch.module.skyeng.ui.screenA;
+package arch.module.skyeng.ui.screenB;
 
 import android.os.Bundle
 import android.view.LayoutInflater

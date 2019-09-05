@@ -7,7 +7,7 @@ import androidx.fragment.app.FragmentActivity
 import arch.module.skyeng.R
 import arch.module.skyeng.ui.NavigationConst
 import arch.module.skyeng.ui.screenA.ScreenAFragment
-import arch.module.skyeng.ui.screenA.ScreenBFragment
+import arch.module.skyeng.ui.screenB.ScreenBFragment
 import ru.terrakok.cicerone.android.SupportAppNavigator
 
 

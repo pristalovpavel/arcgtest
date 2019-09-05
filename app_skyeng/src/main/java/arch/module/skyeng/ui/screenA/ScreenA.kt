@@ -5,8 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import arch.module.skyeng.R
-import arch.module.skyeng.di.Navigation
-import arch.module.skyeng.ui.NavigationConst
+import arch.module.skyeng.coordinators.CoordinatorParamHolder
 import kotlinx.android.synthetic.main.fragment_screena_layout.*
 import moxy.InjectViewState
 import moxy.MvpAppCompatFragment
@@ -14,7 +13,6 @@ import moxy.MvpPresenter
 import moxy.MvpView
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
-import ru.terrakok.cicerone.Router
 
 
 class ScreenAFragment : MvpAppCompatFragment(), IScreenAView {
@@ -28,7 +26,7 @@ class ScreenAFragment : MvpAppCompatFragment(), IScreenAView {
 
     @ProvidePresenter
     fun providePresenter(): ScreenAPresenter = ScreenAPresenter(
-        Navigation.instanse.router
+        CoordinatorParamHolder.provideOut("key") as (ScreenAOutCmd) -> Unit
     )
 
     override fun onCreateView(
@@ -48,13 +46,17 @@ class ScreenAFragment : MvpAppCompatFragment(), IScreenAView {
     }
 }
 
+sealed class ScreenAOutCmd
+
+object ButtonPressed : ScreenAOutCmd()
+
 @InjectViewState
 class ScreenAPresenter constructor(
-    private val router: Router
+    private val out: (ScreenAOutCmd) -> Unit
 ) : MvpPresenter<IScreenAView>() {
 
     fun openNextScreen() {
-        router.navigateTo(NavigationConst.SCREEN_B)
+        out(ButtonPressed)
     }
 
 }
