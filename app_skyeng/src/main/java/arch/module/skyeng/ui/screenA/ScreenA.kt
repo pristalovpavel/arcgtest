@@ -48,7 +48,7 @@ class ScreenAFragment : MvpAppCompatFragment(), IScreenAView {
 
 sealed class ScreenAOutCmd
 
-object ButtonPressed : ScreenAOutCmd()
+object GoPressed : ScreenAOutCmd()
 
 @InjectViewState
 class ScreenAPresenter constructor(
@@ -56,7 +56,7 @@ class ScreenAPresenter constructor(
 ) : MvpPresenter<IScreenAView>() {
 
     fun openNextScreen() {
-        out(ButtonPressed)
+        out(GoPressed)
     }
 
 }

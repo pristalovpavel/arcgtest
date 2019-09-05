@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import arch.module.skyeng.R
+import arch.module.skyeng.coordinators.CoordinatorParamHolder
+import kotlinx.android.synthetic.main.fragment_screenb_layout.*
 import moxy.InjectViewState
 import moxy.MvpAppCompatFragment
 import moxy.MvpPresenter
@@ -24,7 +26,9 @@ class ScreenBFragment : MvpAppCompatFragment(), IScreenBView {
     lateinit var presenter: ScreenBPresenter
 
     @ProvidePresenter
-    fun providePresenter(): ScreenBPresenter = ScreenBPresenter()
+    fun providePresenter(): ScreenBPresenter = ScreenBPresenter(
+        CoordinatorParamHolder.provideOut("key2") as (ScreenBOutCmd) -> Unit
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,14 +41,24 @@ class ScreenBFragment : MvpAppCompatFragment(), IScreenBView {
     fun getLayoutId(): Int = R.layout.fragment_screenb_layout
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
+        button.setOnClickListener {
+            presenter.onClickDone()
+        }
     }
 }
+
+sealed class ScreenBOutCmd
+
+object DonePressed : ScreenBOutCmd()
 
 
 @InjectViewState
 class ScreenBPresenter @Inject constructor(
+    private val cmd: (ScreenBOutCmd) -> Unit
 ) : MvpPresenter<IScreenBView>() {
+    fun onClickDone() {
+        cmd(DonePressed)
+    }
 
 }
 
