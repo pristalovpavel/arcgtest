@@ -33,9 +33,14 @@ dependencies {
     kapt "com.google.dagger:dagger-android-processor:$libVersions.dagger"
     implementation "com.google.dagger:dagger-android-support:$libVersions.dagger"
 
-    implementation "com.squareup.okhttp3:logging-interceptor:$libVersions.okhttp"
-    implementation "com.squareup.okhttp3:okhttp:$libVersions.okhttp"
-    compileOnly "com.squareup.retrofit2:retrofit:$libVersions.retrofit"
+    api "com.github.moxy-community:moxy:moxyVersion$libVersions.moxy"
+    api "com.github.moxy-community:moxy-androidx:$libVersions.moxy"
+    kapt "com.github.moxy-community:moxy-compiler:$libVersions.moxy"
+
+
+//    implementation "com.squareup.okhttp3:logging-interceptor:$libVersions.okhttp"
+//    implementation "com.squareup.okhttp3:okhttp:$libVersions.okhttp"
+//    compileOnly "com.squareup.retrofit2:retrofit:$libVersions.retrofit"
 
     implementation "ru.terrakok.cicerone:cicerone:$libVersions.cicerone"
 
