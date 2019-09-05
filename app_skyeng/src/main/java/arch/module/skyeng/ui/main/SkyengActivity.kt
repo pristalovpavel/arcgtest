@@ -1,9 +1,11 @@
 package arch.module.skyeng.ui.main
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import arch.module.skyeng.R
 import arch.module.skyeng.coordinators.RootCoordinator
+import arch.module.skyeng.coordinators.RootRouter
 import arch.module.skyeng.di.Navigation
 import arch.module.skyeng.di.SkyengNavigator
 
@@ -14,13 +16,14 @@ class SkyengActivity : AppCompatActivity() {
 
     val navigatorHolder = Navigation.instanse.navigatorHolder
 
-    private val rootCoordinator = RootCoordinator(router)
+    private val rootCoordinator = RootCoordinator(RootRouter(router))
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_skyeng)
 
         if (savedInstanceState == null) {
+            Toast.makeText(this,"cold start",Toast.LENGTH_SHORT).show()
             rootCoordinator.showStartScreen()
         }
     }

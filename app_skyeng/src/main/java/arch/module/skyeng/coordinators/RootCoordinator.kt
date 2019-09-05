@@ -11,29 +11,45 @@ import ru.terrakok.cicerone.Router
 
 
 class RootCoordinator(
-    private val router: Router
+    private val router: RootRouter
 ) {
+
+    private var counter: Int = 0
 
     private lateinit var screenAIn: ScreenAIn
 
     fun showStartScreen() {
-        val qwe: (ScreenAOutCmd) -> Unit = {
-            when (it) {
-                is GoPressed -> router.navigateTo(NavigationConst.SCREEN_B)
-                is OnCreate -> screenAIn = it.input
-            }
-        }
-        CoordinatorParamHolder.registerOut("key", qwe)
-
-        val qwe2: (ScreenBOutCmd) -> Unit = {
-            when (it) {
-                is DonePressed -> {
-                    screenAIn.done()
-                    router.exit()
+        router.openScreenA { outA: ScreenAOutCmd ->
+            when (outA) {
+                is GoPressed -> router.openScreenB { outB: ScreenBOutCmd ->
+                    when (outB) {
+                        is DonePressed -> {
+                            router.closeScreenB()
+                            screenAIn.done(++counter)
+                        }
+                    }
                 }
+                is OnCreate -> screenAIn = outA.input
             }
         }
-        CoordinatorParamHolder.registerOut("key2", qwe2)
+    }
+}
+
+class RootRouter(
+    private val router: Router
+
+) {
+    fun openScreenA(out: (ScreenAOutCmd) -> Unit) {
+        CoordinatorParamHolder.registerOut("key", out)
         router.navigateTo(NavigationConst.SCREEN_A)
+    }
+
+    fun openScreenB(out: (ScreenBOutCmd) -> Unit) {
+        CoordinatorParamHolder.registerOut("key2", out)
+        router.navigateTo(NavigationConst.SCREEN_B)
+    }
+
+    fun closeScreenB() {
+        router.exit()
     }
 }

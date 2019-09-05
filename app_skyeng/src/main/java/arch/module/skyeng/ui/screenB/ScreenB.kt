@@ -27,7 +27,7 @@ class ScreenBFragment : MvpAppCompatFragment(), IScreenBView {
 
     @ProvidePresenter
     fun providePresenter(): ScreenBPresenter = ScreenBPresenter(
-        CoordinatorParamHolder.provideOut("key2") as (ScreenBOutCmd) -> Unit
+        CoordinatorParamHolder.provideOut("key2")
     )
 
     override fun onCreateView(

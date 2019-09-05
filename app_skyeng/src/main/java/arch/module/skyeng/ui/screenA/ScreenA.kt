@@ -14,6 +14,8 @@ import moxy.MvpPresenter
 import moxy.MvpView
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
+import moxy.viewstate.strategy.OneExecutionStateStrategy
+import moxy.viewstate.strategy.StateStrategyType
 
 
 class ScreenAFragment : MvpAppCompatFragment(), IScreenAView {
@@ -27,7 +29,7 @@ class ScreenAFragment : MvpAppCompatFragment(), IScreenAView {
 
     @ProvidePresenter
     fun providePresenter(): ScreenAPresenter = ScreenAPresenter(
-        CoordinatorParamHolder.provideOut("key") as (ScreenAOutCmd) -> Unit
+        CoordinatorParamHolder.provideOut("key")
     )
 
     override fun onCreateView(
@@ -46,8 +48,8 @@ class ScreenAFragment : MvpAppCompatFragment(), IScreenAView {
         }
     }
 
-    override fun showToast() {
-        Toast.makeText(context!!, "Done", Toast.LENGTH_SHORT).show()
+    override fun showToast(counter: Int) {
+        Toast.makeText(context!!, "Done ($counter)", Toast.LENGTH_SHORT).show()
     }
 }
 
@@ -59,7 +61,7 @@ class OnCreate(val input: ScreenAIn) : ScreenAOutCmd()
 
 
 interface ScreenAIn {
-    fun done()
+    fun done(counter: Int)
 }
 
 @InjectViewState
@@ -70,8 +72,8 @@ class ScreenAPresenter constructor(
         out(OnCreate(this))
     }
 
-    override fun done() {
-        viewState.showToast()
+    override fun done(counter: Int) {
+        viewState.showToast(counter)
     }
 
     fun openNextScreen() {
@@ -80,6 +82,7 @@ class ScreenAPresenter constructor(
 
 }
 
+@StateStrategyType(value = OneExecutionStateStrategy::class)
 interface IScreenAView : MvpView {
-    fun showToast()
+    fun showToast(counter: Int)
 }
