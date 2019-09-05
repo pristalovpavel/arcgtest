@@ -1,17 +1,16 @@
 package arch.module.skyeng.coordinators
 
 import arch.module.skyeng.ui.NavigationConst
-import arch.module.skyeng.ui.screenA.GoPressed
-import arch.module.skyeng.ui.screenA.OnCreate
-import arch.module.skyeng.ui.screenA.ScreenAIn
-import arch.module.skyeng.ui.screenA.ScreenAOutCmd
+import arch.module.skyeng.ui.screenA.*
 import arch.module.skyeng.ui.screenB.DonePressed
 import arch.module.skyeng.ui.screenB.ScreenBOutCmd
 import ru.terrakok.cicerone.Router
 
 
 class RootCoordinator(
-    private val router: RootRouter
+    private val router: RootRouter,
+    private val cheRouter: Router
+
 ) {
 
     private var counter: Int = 0
@@ -29,6 +28,14 @@ class RootCoordinator(
                         }
                     }
                 }
+                is ChildPressed -> ChildCoordinator(ChildRouter(cheRouter))() {
+                    when (it) {
+                        is ChildCoordinatorDone -> {
+                            screenAIn.coordinatorDone()
+                            router.backToScreenA()
+                        }
+                    }
+                }
                 is OnCreate -> screenAIn = outA.input
             }
         }
@@ -37,6 +44,7 @@ class RootCoordinator(
 
 class RootRouter(
     private val router: Router
+
 ) : IGetOutProvider {
     var out: Out? = null
 
@@ -54,5 +62,9 @@ class RootRouter(
 
     fun closeScreenB() {
         router.exit()
+    }
+
+    fun backToScreenA() {
+        router.backTo(NavigationConst.SCREEN_A)
     }
 }

@@ -20,7 +20,7 @@ class SkyengActivity : AppCompatActivity(), IGetOutProvider {
 
     private val rootRouter = RootRouter(router)
 
-    private val rootCoordinator = RootCoordinator(rootRouter)
+    private val rootCoordinator = RootCoordinator(rootRouter, router)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

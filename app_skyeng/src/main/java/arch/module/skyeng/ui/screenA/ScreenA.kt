@@ -46,22 +46,32 @@ class ScreenAFragment : MvpAppCompatFragment(), IScreenAView {
         button.setOnClickListener {
             presenter.openNextScreen()
         }
+        button2.setOnClickListener {
+            presenter.openChildScreen()
+        }
     }
 
     override fun showToast(counter: Int) {
         Toast.makeText(context!!, "Done ($counter)", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun coordinatorDone() {
+        Toast.makeText(context!!, "coordinatorDone", Toast.LENGTH_SHORT).show()
     }
 }
 
 sealed class ScreenAOutCmd
 
 object GoPressed : ScreenAOutCmd()
+object ChildPressed : ScreenAOutCmd()
 
 class OnCreate(val input: ScreenAIn) : ScreenAOutCmd()
 
 
 interface ScreenAIn {
     fun done(counter: Int)
+
+    fun coordinatorDone()
 }
 
 @InjectViewState
@@ -76,13 +86,17 @@ class ScreenAPresenter constructor(
         viewState.showToast(counter)
     }
 
-    fun openNextScreen() {
-        out(GoPressed)
-    }
+    fun openNextScreen() = out(GoPressed)
 
+    fun openChildScreen() = out(ChildPressed)
+
+    override fun coordinatorDone() {
+        viewState.coordinatorDone()
+    }
 }
 
 @StateStrategyType(value = OneExecutionStateStrategy::class)
 interface IScreenAView : MvpView {
     fun showToast(counter: Int)
+    fun coordinatorDone()
 }

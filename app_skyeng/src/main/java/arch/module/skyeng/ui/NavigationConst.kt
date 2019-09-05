@@ -1,9 +1,9 @@
 package arch.module.skyeng.ui
 
 
+object NavigationConst {
 
-object NavigationConst{
-
-    val SCREEN_A = "SCREEN_A"
-    val SCREEN_B = "SCREEN_B"
+    const val SCREEN_A = "SCREEN_A"
+    const val SCREEN_B = "SCREEN_B"
+    const val SCREEN_C = "SCREEN_C"
 }
