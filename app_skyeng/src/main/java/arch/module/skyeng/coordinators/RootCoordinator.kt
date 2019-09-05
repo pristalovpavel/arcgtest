@@ -37,15 +37,18 @@ class RootCoordinator(
 
 class RootRouter(
     private val router: Router
+) : IGetOutProvider {
+    var out: Out? = null
 
-) {
+    override fun provideOut(): Out = out ?: throw IllegalArgumentException()
+
     fun openScreenA(out: (ScreenAOutCmd) -> Unit) {
-        CoordinatorParamHolder.registerOut("key", out)
+        this.out = out
         router.navigateTo(NavigationConst.SCREEN_A)
     }
 
     fun openScreenB(out: (ScreenBOutCmd) -> Unit) {
-        CoordinatorParamHolder.registerOut("key2", out)
+        this.out = out
         router.navigateTo(NavigationConst.SCREEN_B)
     }
 

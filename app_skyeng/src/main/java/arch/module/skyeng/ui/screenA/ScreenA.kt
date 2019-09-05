@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import arch.module.skyeng.R
-import arch.module.skyeng.coordinators.CoordinatorParamHolder
+import arch.module.skyeng.ui.provideOut
 import kotlinx.android.synthetic.main.fragment_screena_layout.*
 import moxy.InjectViewState
 import moxy.MvpAppCompatFragment
@@ -29,7 +29,7 @@ class ScreenAFragment : MvpAppCompatFragment(), IScreenAView {
 
     @ProvidePresenter
     fun providePresenter(): ScreenAPresenter = ScreenAPresenter(
-        CoordinatorParamHolder.provideOut("key")
+        context.provideOut()
     )
 
     override fun onCreateView(

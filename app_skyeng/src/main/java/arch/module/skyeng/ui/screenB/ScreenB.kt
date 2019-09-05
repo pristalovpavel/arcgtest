@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import arch.module.skyeng.R
-import arch.module.skyeng.coordinators.CoordinatorParamHolder
+import arch.module.skyeng.ui.provideOut
 import kotlinx.android.synthetic.main.fragment_screenb_layout.*
 import moxy.InjectViewState
 import moxy.MvpAppCompatFragment
@@ -27,7 +27,7 @@ class ScreenBFragment : MvpAppCompatFragment(), IScreenBView {
 
     @ProvidePresenter
     fun providePresenter(): ScreenBPresenter = ScreenBPresenter(
-        CoordinatorParamHolder.provideOut("key2")
+        context.provideOut()
     )
 
     override fun onCreateView(

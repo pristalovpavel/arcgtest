@@ -4,30 +4,34 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import arch.module.skyeng.R
+import arch.module.skyeng.coordinators.IGetOutProvider
+import arch.module.skyeng.coordinators.Out
 import arch.module.skyeng.coordinators.RootCoordinator
 import arch.module.skyeng.coordinators.RootRouter
 import arch.module.skyeng.di.Navigation
 import arch.module.skyeng.di.SkyengNavigator
 
 
-class SkyengActivity : AppCompatActivity() {
+class SkyengActivity : AppCompatActivity(), IGetOutProvider {
 
-    val router = Navigation.instanse.router
+    private val router = Navigation.instanse.router
 
-    val navigatorHolder = Navigation.instanse.navigatorHolder
+    private val navigatorHolder = Navigation.instanse.navigatorHolder
 
-    private val rootCoordinator = RootCoordinator(RootRouter(router))
+    private val rootRouter = RootRouter(router)
+
+    private val rootCoordinator = RootCoordinator(rootRouter)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_skyeng)
 
         if (savedInstanceState == null) {
-            Toast.makeText(this,"cold start",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "cold start", Toast.LENGTH_SHORT).show()
             rootCoordinator.showStartScreen()
         }
-    }
 
+    }
 
     private val navigator by lazy { SkyengNavigator(this) }
 
@@ -40,6 +44,8 @@ class SkyengActivity : AppCompatActivity() {
         super.onPause()
         navigatorHolder.removeNavigator()
     }
+
+    override fun provideOut(): Out = rootRouter.provideOut()
 
     override fun onBackPressed() {
         val fragment = supportFragmentManager.findFragmentById(R.id.layout_child_fragment_container)
