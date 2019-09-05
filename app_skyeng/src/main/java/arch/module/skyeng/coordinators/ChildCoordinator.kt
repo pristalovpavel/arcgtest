@@ -15,7 +15,7 @@ class ChildCoordinator(
     operator fun invoke(out: (ChildCoordinatorOutCmd) -> Unit) {
         router.openScreenC { outC: ScreenCOutCmd ->
             when (outC) {
-                is ContinuePressed ->  router.openScreenB { outB: ScreenBOutCmd ->
+                is ContinuePressed -> router.openScreenB { outB: ScreenBOutCmd ->
                     when (outB) {
                         is DonePressed -> out(ChildCoordinatorDone)
                     }
@@ -31,19 +31,17 @@ object ChildCoordinatorDone : ChildCoordinatorOutCmd()
 
 
 class ChildRouter(
-    private val router: Router
-) : IGetOutProvider {
-    var out: Out? = null
-
-    override fun provideOut(): Out = out ?: throw IllegalArgumentException()
+    private val router: Router,
+    private val callback: OutCallback
+) {
 
     fun openScreenC(out: (ScreenCOutCmd) -> Unit) {
-        this.out = out
+        callback(out)
         router.navigateTo(NavigationConst.SCREEN_C)
     }
 
     fun openScreenB(out: (ScreenBOutCmd) -> Unit) {
-        this.out = out
+        callback(out)
         router.navigateTo(NavigationConst.SCREEN_B)
     }
 }

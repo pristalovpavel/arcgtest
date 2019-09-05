@@ -7,7 +7,6 @@ import arch.module.skyeng.R
 import arch.module.skyeng.coordinators.IGetOutProvider
 import arch.module.skyeng.coordinators.Out
 import arch.module.skyeng.coordinators.RootCoordinator
-import arch.module.skyeng.coordinators.RootRouter
 import arch.module.skyeng.di.Navigation
 import arch.module.skyeng.di.SkyengNavigator
 
@@ -18,9 +17,10 @@ class SkyengActivity : AppCompatActivity(), IGetOutProvider {
 
     private val navigatorHolder = Navigation.instanse.navigatorHolder
 
-    private val rootRouter = RootRouter(router)
-
-    private val rootCoordinator = RootCoordinator(rootRouter, router)
+    private var out: Any? = null
+    private val rootCoordinator = RootCoordinator(router) { value ->
+        out = value
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +45,7 @@ class SkyengActivity : AppCompatActivity(), IGetOutProvider {
         navigatorHolder.removeNavigator()
     }
 
-    override fun provideOut(): Out = rootRouter.provideOut()
+    override fun provideOut(): Out = out!!
 
     override fun onBackPressed() {
         val fragment = supportFragmentManager.findFragmentById(R.id.layout_child_fragment_container)

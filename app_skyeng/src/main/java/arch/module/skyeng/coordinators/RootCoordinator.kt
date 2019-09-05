@@ -6,12 +6,13 @@ import arch.module.skyeng.ui.screenB.DonePressed
 import arch.module.skyeng.ui.screenB.ScreenBOutCmd
 import ru.terrakok.cicerone.Router
 
+typealias OutCallback = (Out) -> Unit
 
 class RootCoordinator(
-    private val router: RootRouter,
-    private val cheRouter: Router
-
+    private val cheRouter: Router,
+    private val callback: OutCallback
 ) {
+    private val router: RootRouter = RootRouter(cheRouter, callback)
 
     private var counter: Int = 0
 
@@ -28,7 +29,7 @@ class RootCoordinator(
                         }
                     }
                 }
-                is ChildPressed -> ChildCoordinator(ChildRouter(cheRouter))() {
+                is ChildPressed -> ChildCoordinator(ChildRouter(cheRouter, callback))() {
                     when (it) {
                         is ChildCoordinatorDone -> {
                             screenAIn.coordinatorDone()
@@ -43,20 +44,16 @@ class RootCoordinator(
 }
 
 class RootRouter(
-    private val router: Router
-
-) : IGetOutProvider {
-    var out: Out? = null
-
-    override fun provideOut(): Out = out ?: throw IllegalArgumentException()
-
+    private val router: Router,
+    private val callback: OutCallback
+) {
     fun openScreenA(out: (ScreenAOutCmd) -> Unit) {
-        this.out = out
+        callback(out)
         router.navigateTo(NavigationConst.SCREEN_A)
     }
 
     fun openScreenB(out: (ScreenBOutCmd) -> Unit) {
-        this.out = out
+        callback(out)
         router.navigateTo(NavigationConst.SCREEN_B)
     }
 
