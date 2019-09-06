@@ -29,17 +29,11 @@ class ChildCoordinator(
 }
 
 class ChildRouter(
-    private val router: Router,
-    private val callback: OutCallback
-) {
+    router: Router,
+    callback: OutCallback
+) : BaseRouter(router, callback) {
 
-    fun openScreenC(out: (ScreenCOutCmd) -> Unit) {
-        callback(out)
-        router.navigateTo(NavigationConst.SCREEN_C)
-    }
+    fun openScreenC(out: (ScreenCOutCmd) -> Unit) = navigateTo(out, NavigationConst.SCREEN_C)
 
-    fun openScreenB(out: (ScreenBOutCmd) -> Unit) {
-        callback(out)
-        router.navigateTo(NavigationConst.SCREEN_B)
-    }
+    fun openScreenB(out: (ScreenBOutCmd) -> Unit) = navigateTo(out, NavigationConst.SCREEN_B)
 }

@@ -43,24 +43,15 @@ class RootCoordinator(
 }
 
 class RootRouter(
-    private val router: Router,
-    private val callback: OutCallback
-) {
-    fun openScreenA(out: (ScreenAOutCmd) -> Unit) {
-        callback(out)
-        router.navigateTo(NavigationConst.SCREEN_A)
-    }
+    router: Router,
+    callback: OutCallback
+) : BaseRouter(router, callback) {
 
-    fun openScreenB(out: (ScreenBOutCmd) -> Unit) {
-        callback(out)
-        router.navigateTo(NavigationConst.SCREEN_B)
-    }
+    fun openScreenA(out: (ScreenAOutCmd) -> Unit) = navigateTo(out, NavigationConst.SCREEN_A)
 
-    fun closeScreenB() {
-        router.exit()
-    }
+    fun openScreenB(out: (ScreenBOutCmd) -> Unit) = navigateTo(out, NavigationConst.SCREEN_B)
 
-    fun backToScreenA() {
-        router.backTo(NavigationConst.SCREEN_A)
-    }
+    fun closeScreenB() = exit()
+
+    fun backToScreenA() = backTo(NavigationConst.SCREEN_A)
 }
