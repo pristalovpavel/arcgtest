@@ -5,6 +5,7 @@ import arch.module.skyeng.ui.screenA.*
 import arch.module.skyeng.ui.screenB.DonePressed
 import arch.module.skyeng.ui.screenB.ScreenBOutCmd
 import ru.terrakok.cicerone.Router
+import java.lang.ref.WeakReference
 
 
 class RootCoordinator(
@@ -15,7 +16,7 @@ class RootCoordinator(
 
     private var counter: Int = 0
 
-    private lateinit var screenAIn: ScreenAIn
+    private lateinit var screenAIn: WeakReference<ScreenAIn>
 
     fun showStartScreen() {
         router.openScreenA { outA: ScreenAOutCmd ->
@@ -24,19 +25,19 @@ class RootCoordinator(
                     when (outB) {
                         is DonePressed -> {
                             router.closeScreenB()
-                            screenAIn.done(++counter)
+                            screenAIn.get()?.done(++counter)
                         }
                     }
                 }
                 is ChildPressed -> ChildCoordinator(ChildRouter(cheRouter, callback))() {
                     when (it) {
                         is ChildCoordinatorDone -> {
-                            screenAIn.coordinatorDone()
+                            screenAIn.get()?.coordinatorDone()
                             router.backToScreenA()
                         }
                     }
                 }
-                is OnCreate -> screenAIn = outA.input
+                is OnCreate -> screenAIn = WeakReference(outA.input)
             }
         }
     }

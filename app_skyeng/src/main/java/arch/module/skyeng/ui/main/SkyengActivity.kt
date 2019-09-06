@@ -21,6 +21,14 @@ class SkyengActivity : AppCompatActivity(), IGetOutProvider {
         out = value
     }
 
+    override fun provideOut(): Out = popOut()
+
+    private fun popOut(): Out {
+        val local: Any = out ?: throw IllegalAccessException("жёпка =(")
+        out = null
+        return local
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_skyeng)
@@ -44,13 +52,7 @@ class SkyengActivity : AppCompatActivity(), IGetOutProvider {
         navigatorHolder.removeNavigator()
     }
 
-    override fun provideOut(): Out = popOut()
 
-    private fun popOut(): Out {
-        val local: Any = out ?: throw IllegalAccessException("жёпка =(")
-        out = null
-        return local
-    }
 
     override fun onBackPressed() {
         val fragment = supportFragmentManager.findFragmentById(R.id.layout_child_fragment_container)

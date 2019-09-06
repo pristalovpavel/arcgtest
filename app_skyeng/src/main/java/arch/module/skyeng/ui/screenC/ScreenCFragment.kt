@@ -6,7 +6,6 @@ import arch.module.skyeng.R
 import arch.module.skyeng.ui.base.BaseFragment
 import arch.module.skyeng.utils.ext.provideOut
 import kotlinx.android.synthetic.main.fragment_screenc_layout.*
-import moxy.MvpView
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
 
