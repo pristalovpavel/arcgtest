@@ -1,16 +1,13 @@
 package arch.module.skyeng.ui.screenA;
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import arch.module.skyeng.R
-import arch.module.skyeng.ui.provideOut
+import arch.module.skyeng.ui.base.BaseFragment
+import arch.module.skyeng.ui.base.BasePresenter
+import arch.module.skyeng.utils.ext.provideOut
 import kotlinx.android.synthetic.main.fragment_screena_layout.*
-import moxy.InjectViewState
-import moxy.MvpAppCompatFragment
-import moxy.MvpPresenter
 import moxy.MvpView
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
@@ -18,7 +15,7 @@ import moxy.viewstate.strategy.OneExecutionStateStrategy
 import moxy.viewstate.strategy.StateStrategyType
 
 
-class ScreenAFragment : MvpAppCompatFragment(), IScreenAView {
+class ScreenAFragment : BaseFragment<IScreenAView, BasePresenter<IScreenAView>>(), IScreenAView {
 
     companion object {
         fun newInstance() = ScreenAFragment()
@@ -32,15 +29,7 @@ class ScreenAFragment : MvpAppCompatFragment(), IScreenAView {
         context.provideOut()
     )
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(getLayoutId(), container, false)
-    }
-
-    fun getLayoutId(): Int = R.layout.fragment_screena_layout
+    override fun getLayoutId(): Int = R.layout.fragment_screena_layout
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         button.setOnClickListener {
@@ -60,40 +49,6 @@ class ScreenAFragment : MvpAppCompatFragment(), IScreenAView {
     }
 }
 
-sealed class ScreenAOutCmd
-
-object GoPressed : ScreenAOutCmd()
-object ChildPressed : ScreenAOutCmd()
-
-class OnCreate(val input: ScreenAIn) : ScreenAOutCmd()
-
-
-interface ScreenAIn {
-    fun done(counter: Int)
-
-    fun coordinatorDone()
-}
-
-@InjectViewState
-class ScreenAPresenter constructor(
-    private val out: (ScreenAOutCmd) -> Unit
-) : MvpPresenter<IScreenAView>(), ScreenAIn {
-    override fun onFirstViewAttach() {
-        out(OnCreate(this))
-    }
-
-    override fun done(counter: Int) {
-        viewState.showToast(counter)
-    }
-
-    fun openNextScreen() = out(GoPressed)
-
-    fun openChildScreen() = out(ChildPressed)
-
-    override fun coordinatorDone() {
-        viewState.coordinatorDone()
-    }
-}
 
 @StateStrategyType(value = OneExecutionStateStrategy::class)
 interface IScreenAView : MvpView {

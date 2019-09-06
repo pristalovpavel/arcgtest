@@ -6,7 +6,6 @@ import arch.module.skyeng.ui.screenB.DonePressed
 import arch.module.skyeng.ui.screenB.ScreenBOutCmd
 import ru.terrakok.cicerone.Router
 
-typealias OutCallback = (Out) -> Unit
 
 class RootCoordinator(
     private val cheRouter: Router,

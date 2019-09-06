@@ -13,9 +13,8 @@ import arch.module.skyeng.di.SkyengNavigator
 
 class SkyengActivity : AppCompatActivity(), IGetOutProvider {
 
-    private val router = Navigation.instanse.router
-
-    private val navigatorHolder = Navigation.instanse.navigatorHolder
+    private val router = Navigation.instance.router
+    private val navigatorHolder = Navigation.instance.navigatorHolder
 
     private var out: Any? = null
     private val rootCoordinator = RootCoordinator(router) { value ->
@@ -45,7 +44,13 @@ class SkyengActivity : AppCompatActivity(), IGetOutProvider {
         navigatorHolder.removeNavigator()
     }
 
-    override fun provideOut(): Out = out!!
+    override fun provideOut(): Out = popOut()
+
+    private fun popOut(): Out {
+        val local: Any = out ?: throw IllegalAccessException("жёпка =(")
+        out = null
+        return local
+    }
 
     override fun onBackPressed() {
         val fragment = supportFragmentManager.findFragmentById(R.id.layout_child_fragment_container)

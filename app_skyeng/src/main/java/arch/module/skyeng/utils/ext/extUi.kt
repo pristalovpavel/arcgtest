@@ -1,4 +1,4 @@
-package arch.module.skyeng.ui
+package arch.module.skyeng.utils.ext
 
 import android.content.Context
 import android.os.Bundle

@@ -7,6 +7,9 @@ import arch.module.skyeng.ui.screenC.ContinuePressed
 import arch.module.skyeng.ui.screenC.ScreenCOutCmd
 import ru.terrakok.cicerone.Router
 
+sealed class ChildCoordinatorOutCmd
+
+object ChildCoordinatorDone : ChildCoordinatorOutCmd()
 
 class ChildCoordinator(
     private val router: ChildRouter
@@ -24,11 +27,6 @@ class ChildCoordinator(
         }
     }
 }
-
-sealed class ChildCoordinatorOutCmd
-
-object ChildCoordinatorDone : ChildCoordinatorOutCmd()
-
 
 class ChildRouter(
     private val router: Router,
