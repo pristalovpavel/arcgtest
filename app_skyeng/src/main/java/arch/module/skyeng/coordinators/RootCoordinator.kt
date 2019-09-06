@@ -29,7 +29,7 @@ class RootCoordinator(
                         }
                     }
                 }
-                is ChildPressed -> ChildCoordinator(ChildRouter(cheRouter, callback))() {
+                is ChildPressed -> FlowBCoordinator(ChildRouter(cheRouter, callback))() {
                     when (it) {
                         is ChildCoordinatorDone -> {
                             screenAIn.get()?.coordinatorDone()

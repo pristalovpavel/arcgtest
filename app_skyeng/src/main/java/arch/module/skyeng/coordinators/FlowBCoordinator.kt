@@ -11,7 +11,7 @@ sealed class ChildCoordinatorOutCmd
 
 object ChildCoordinatorDone : ChildCoordinatorOutCmd()
 
-class ChildCoordinator(
+class FlowBCoordinator(
     private val router: ChildRouter
 ) {
 
